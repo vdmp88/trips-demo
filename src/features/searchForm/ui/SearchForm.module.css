@@ -50,7 +50,7 @@
       border-radius: var(--bd-radius-8);
     }
 
-    :global(.search-form-input__title) {
+    .inputWrapper :global(.search-form-input__title) {
       display: none;
     }
   }

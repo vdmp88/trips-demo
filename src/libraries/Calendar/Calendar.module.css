@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
 
-  :global(.calendar) {
+  .calendar :global(.calendar) {
     width: 336px;
   }
 

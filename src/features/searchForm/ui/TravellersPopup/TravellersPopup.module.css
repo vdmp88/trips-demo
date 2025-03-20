@@ -85,7 +85,7 @@
     width: 16px;
     height: 16px;
 
-    path {
+    .icon path {
       fill: var(--white);
       stroke: var(--white);
       transition: 0.2s all;
