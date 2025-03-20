@@ -1,0 +1,85 @@
+:root {
+  --primary-color: #0d40ad;
+  --secondary-color: #2674ea;
+  --secondary-light-color: #3b92f5;
+
+  --primary-dimmed-color: #dbedfe;
+  --disabled-color: #a4a7ae;
+
+  --white: #ffffff;
+  --white-50: #eff7ff;
+
+  --gray-900: #181d27;
+  --gray-800: #262c38;
+  --gray-600: #535862;
+  --gray-500: #717680;
+  --gray-400: #a4a7ae;
+  --gray-300: #d5d7da;
+  --gray-200: #e9eaeb;
+  --gray-50: #fafafa;
+
+  --success-color: #00a230;
+  --warning-color: #ff9500;
+  --danger-color: #00a230;
+  --error-color: #f83b3b;
+
+  --button-primary: #ff9500;
+  --button-primary-hover: #e26e00;
+  --button-secondary: #0f3992;
+  --button-secondary-hover: #2674ea;
+  --button-outline: #2674ea;
+  --button-outline-hover: #0d40ad;
+
+  --button-spacing-14: 14px;
+  --button-spacing-24: 24px;
+  --button-spacing-26: 26px;
+
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+
+  --spacing-section: 64px;
+
+  --bd-radius-4: 4px;
+  --bd-radius-8: 8px;
+  --bd-radius-16: 16px;
+  --bd-radius-20: 20px;
+
+  --drop-shadow-100: 0 4px 10px rgba(132, 132, 132, 0.15);
+  --drop-shadow-200: 0 6px 20px rgba(132, 132, 132, 0.2);
+  --drop-shadow-300: 0 8px 30px rgba(132, 132, 132, 0.25);
+
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+  --fw-900: 900;
+
+  --text-12: 12px;
+  --text-14: 14px;
+  --text-16: 16px;
+  --text-18: 18px;
+  --text-20: 20px;
+  --text-22: 22px;
+  --text-24: 24px;
+  --text-26: 26px;
+  --text-28: 28px;
+  --text-30: 30px;
+  --text-32: 32px;
+  --text-34: 34px;
+  --text-40: 40px;
+  --text-42: 42px;
+  --text-48: 48px;
+  --text-56: 56px;
+  --text-62: 62px;
+
+  --primary-font: 'Montserrat', serif;
+}

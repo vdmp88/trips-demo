@@ -1,0 +1,116 @@
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  background-color: var(--white);
+  padding: var(--spacing-16);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.localeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+
+.localeWrapper:not(:last-child) {
+  margin-bottom: var(--spacing-32);
+}
+
+.mobileNavigationHeader {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--spacing-8);
+}
+
+.closeButton,
+.backButton {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backButton {
+  margin-right: auto;
+}
+
+.screenContainer {
+  flex-grow: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.mainScreen,
+.subScreen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.subScreen .menuButton {
+  background: transparent;
+}
+
+.flag,
+.currencyValue {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  top: 50%;
+  left: 16px;
+}
+
+.currencyValue {
+  color: var(--primary-color);
+}
+
+.flag,
+.subScreen .menuButton img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.menuButton {
+  text-align: left;
+  color: var(--primary-color);
+  padding: var(--spacing-12) var(--spacing-16) var(--spacing-12)
+    var(--spacing-56);
+  border-radius: var(--bd-radius-4);
+  border: none;
+  width: 100%;
+  background: var(--white-50);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+}
+
+.localeWrapper:last-child .menuButton {
+  padding: var(--spacing-12) var(--spacing-16) var(--spacing-12)
+    var(--spacing-64);
+}
+
+.menuButton.active {
+  background: var(--white-50);
+}
+
+.menuButton.active::before {
+  content: url('/svg/check.svg');
+  position: absolute;
+  right: 16px;
+  height: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.subScreen .menuButton {
+  padding: var(--spacing-12) var(--spacing-16);
+  align-items: center;
+  gap: var(--spacing-12);
+}

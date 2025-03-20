@@ -1,0 +1,216 @@
+.popup.popup {
+  width: 400px;
+  transform: translateY(100%);
+  right: 0;
+  left: auto;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-16) var(--container-padding) var(--spacing-24)
+      var(--container-padding);
+  }
+}
+
+.title {
+  font-weight: 600;
+  font-size: var(--text-18);
+  color: var(--gray-900);
+  display: block;
+  margin-bottom: var(--spacing-16);
+}
+
+.travellers {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-16);
+}
+
+.travellersItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-16) 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.travellersItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.travellersItemTitle {
+  font-weight: 500;
+  font-size: var(--text-16);
+  color: var(--gray-900);
+  line-height: 22px;
+  display: block;
+}
+
+.travellersItemSubtitle {
+  font-size: var(--text-14);
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--gray-500);
+}
+
+.travellersItemControls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.travellersItemControl {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--bd-radius-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s all;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+
+    path {
+      fill: var(--white);
+      stroke: var(--white);
+      transition: 0.2s all;
+    }
+  }
+
+  &[disabled] {
+    background-color: var(--gray-200);
+
+    .icon {
+      path {
+        fill: var(--disabled-color);
+        stroke: var(--disabled-color);
+      }
+    }
+  }
+}
+
+.travellersItemValue {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-900);
+  font-size: var(--text-18);
+  font-weight: 600;
+}
+
+.hintContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  margin-bottom: var(--spacing-24);
+}
+
+.hint {
+  color: var(--gray-600);
+}
+
+.applyContainer {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    margin-top: auto;
+  }
+}
+
+.classType {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-24);
+}
+
+.classTypeItem {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-16) 0;
+  border-bottom: 1px solid var(--gray-200);
+
+  .classTypeText {
+    font-size: var(--text-16);
+    font-weight: 500;
+    color: var(--gray-900);
+    line-height: 22px;
+  }
+
+  .classTypeIcon {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    border: 2px solid var(--gray-200);
+    transition: 0.2s all;
+    position: relative;
+
+    &:after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background-color: var(--white);
+      border-radius: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: 0.2s transform;
+      transition-delay: 0.2s;
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  input:checked ~ .classTypeIcon {
+    border-color: var(--secondary-color);
+    background-color: var(--secondary-color);
+    &:after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+.divider {
+  margin-left: calc(var(--container-padding) * -1);
+  margin-right: calc(var(--container-padding) * -1);
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  height: 1px;
+  background-color: var(--gray-200);
+}
+
+.hideOnMobile {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.showOnMobile {
+  @media (min-width: 769px) {
+    display: none;
+  }
+}

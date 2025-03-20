@@ -1,0 +1,39 @@
+.radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radioPlaceholder {
+  padding-left: var(--spacing-4);
+}
+
+.radioInput {
+  display: none;
+}
+.radioCircle {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  border: 2px solid var(--white);
+  position: relative;
+  margin: 2px;
+}
+
+.radioCircle::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--white);
+  opacity: 0;
+  border-radius: 100%;
+  transition: 0.3s opacity;
+}
+
+.radioInput:checked ~ .radioCircle::before {
+  opacity: 1;
+}

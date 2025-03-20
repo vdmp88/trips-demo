@@ -1,0 +1,58 @@
+{
+  "HomePage": {
+    "title": "Hallo Welt!",
+    "banner": {
+      "cta": "Flüge suchen",
+      "title": "Unsere besten Flugangebote in Nigeria",
+      "description": "Der Sommer mag noch in weiter Ferne liegen, aber diese Last-Minute-Ziele sind jetzt besonders heiß begehrt."
+    }
+  },
+  "FAQ": {
+    "title": "Häufig gestellte Fragen",
+    "general": {
+      "title": "Allgemein",
+      "bookWithTripcheck": {
+        "question": "Buche ich meinen Flug über Tripcheck?",
+        "answer": "Wir agieren als Meta-Suchmaschine und helfen Ihnen, die besten Flugtickets zu finden. Sobald Sie Ihre ideale Option ausgewählt haben, buchen Sie direkt bei der Fluggesellschaft. So können Sie Treueprogramme nutzen und Ihre bevorzugten Optionen wie Sitzplatzwahl auswählen."
+      },
+      "airlinesDisplayed": {
+        "question": "Welche Fluggesellschaften werden auf Tripcheck angezeigt?",
+        "answer": "Wir streben eine Partnerschaft mit allen Fluggesellschaften in Nigeria an. Derzeit können Sie Flüge mit Air Peace, Arik Air und Ibom Air vergleichen."
+      },
+      "howTripcheckWorks": {
+        "question": "Wie funktioniert Tripcheck?",
+        "answer": "Wir sind eine Flugsuchmaschine. Wir durchsuchen die führenden Airlines online, sodass Sie Flugpreise und andere Reisekosten in Nigeria an einem Ort vergleichen können. Nach der Auswahl des besten Fluges buchen Sie direkt beim Anbieter."
+      },
+      "extraFees": {
+        "question": "Zahle ich zusätzliche Gebühren bei Tripcheck?",
+        "answer": "Tripcheck ist darauf ausgelegt, die Flugsuche in Nigeria zu verbessern. Wir erheben keine Provisionen von Kunden. Der Preis bleibt derselbe wie auf den Websites der Fluggesellschaften."
+      },
+      "lowCo2Flights": {
+        "question": "Kann ich Flüge mit geringeren CO₂-Emissionen buchen?",
+        "answer": "Diese Funktion ist leider noch nicht verfügbar, aber wir arbeiten daran, diese Informationen in die Flugdaten aufzunehmen."
+      }
+    },
+    "tickets": {
+      "title": "Tickets",
+      "afterBooking": {
+        "question": "Was passiert nach meiner Flugbuchung?",
+        "answer": "Sie erhalten eine Buchungsbestätigung per E-Mail mit allen notwendigen Informationen von der Fluggesellschaft, bei der Sie reserviert haben. Bei Fragen zu Ihrer Buchung oder Änderungswünschen wenden Sie sich bitte direkt an die Airline."
+      },
+      "modifyOrRefund": {
+        "question": "Wie kann ich meine Flugtickets ändern oder erstatten lassen?",
+        "answer": "Bei Fragen zu Ihrer Buchung oder wenn Sie Ihren Flug ändern, stornieren oder erstatten lassen möchten, wenden Sie sich bitte direkt an die Airline, bei der Sie gebucht haben."
+      },
+      "infantsNeedTicket": {
+        "question": "Benötigen Kleinkinder ein eigenes Ticket?",
+        "answer": "Kleinkinder werden in der Regel als Reisende unter 2 Jahren eingestuft. Einige Airlines verlangen einen Altersnachweis, z. B. eine Geburtsurkunde. Meistens dürfen Kleinkinder auf dem Schoß eines Erwachsenen reisen. Wenn Sie jedoch einen eigenen Sitzplatz für mehr Sicherheit und Komfort bevorzugen, müssen Sie möglicherweise ein Kinderticket erwerben."
+      }
+    },
+    "marketing": {
+      "title": "Marketing",
+      "contactMarketing": {
+        "question": "Wen kann ich für Marketing- und Partnerschaftsanfragen kontaktieren?",
+        "answer": "Bitte senden Sie eine E-Mail an ..."
+      }
+    }
+  }
+}

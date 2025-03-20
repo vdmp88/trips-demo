@@ -1,0 +1,58 @@
+{
+  "HomePage": {
+    "title": "¡Hola mundo!",
+    "banner": {
+      "cta": "Buscar vuelos",
+      "title": "Nuestras mejores ofertas de vuelos en Nigeria",
+      "description": "El verano puede estar lejos, pero estos destinos de última hora están en su mejor momento ahora."
+    }
+  },
+  "FAQ": {
+    "title": "Preguntas frecuentes",
+    "general": {
+      "title": "General",
+      "bookWithTripcheck": {
+        "question": "¿Reservo mi vuelo con Tripcheck?",
+        "answer": "Operamos como un motor de búsqueda de vuelos, lo que te permite encontrar los mejores boletos. Una vez que hayas identificado la mejor opción, reservarás directamente con la aerolínea. De este modo, puedes incluir tu información de fidelidad y elegir tus opciones preferidas, como la selección de asiento."
+      },
+      "airlinesDisplayed": {
+        "question": "¿Qué aerolíneas se muestran en Tripcheck?",
+        "answer": "Nuestro objetivo es asociarnos con todas las aerolíneas de Nigeria. Sin embargo, por ahora puedes consultar los vuelos con Air Peace, Arik Air e Ibom Air."
+      },
+      "howTripcheckWorks": {
+        "question": "¿Cómo funciona Tripcheck?",
+        "answer": "Somos un motor de búsqueda de vuelos. Buscamos en todas las principales aerolíneas en línea, permitiéndote comparar precios y otros gastos de viaje en Nigeria en un solo lugar. Después de seleccionar el mejor vuelo, puedes reservar directamente con el proveedor."
+      },
+      "extraFees": {
+        "question": "¿Pago tarifas adicionales en Tripcheck?",
+        "answer": "Tripcheck está diseñado para mejorar la experiencia de búsqueda de vuelos en Nigeria. No cobramos comisiones a los clientes. El precio es el mismo que en los sitios web de las aerolíneas."
+      },
+      "lowCo2Flights": {
+        "question": "¿Puedo reservar vuelos con menores emisiones de CO₂?",
+        "answer": "Lamentablemente, esta función aún no está disponible, pero estamos trabajando en agregar esta información a los detalles de los vuelos."
+      }
+    },
+    "tickets": {
+      "title": "Boletos",
+      "afterBooking": {
+        "question": "¿Qué sucede después de reservar mi vuelo?",
+        "answer": "Recibirás un correo electrónico de confirmación de tu reserva con toda la información necesaria de la aerolínea con la que hiciste la reserva. Si tienes preguntas sobre tu reserva o deseas modificar o cancelar tu vuelo, comunícate directamente con ellos."
+      },
+      "modifyOrRefund": {
+        "question": "¿Cómo puedo modificar o reembolsar los boletos de avión?",
+        "answer": "Si tienes preguntas sobre tu reserva o deseas modificar, cancelar o solicitar un reembolso por tu vuelo, comunícate directamente con la aerolínea con la que reservaste."
+      },
+      "infantsNeedTicket": {
+        "question": "¿Los bebés necesitan boleto?",
+        "answer": "Los bebés suelen clasificarse como pasajeros menores de 2 años. Algunas aerolíneas pueden requerir prueba de edad, como un acta de nacimiento. La mayoría permite que los bebés viajen en el regazo de un adulto. Sin embargo, si prefieres un asiento separado por seguridad y comodidad, es posible que necesites comprar un boleto con tarifa infantil."
+      }
+    },
+    "marketing": {
+      "title": "Marketing",
+      "contactMarketing": {
+        "question": "¿Con quién me comunico para oportunidades de marketing y asociaciones?",
+        "answer": "Por favor, envía un correo electrónico a ..."
+      }
+    }
+  }
+}

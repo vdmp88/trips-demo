@@ -1,0 +1,117 @@
+.calendar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  :global(.calendar) {
+    width: 336px;
+  }
+
+  :global(.calendar-content),
+  :global(.calendar-header) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  :global(.react-calendar__viewContainer) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 96px;
+  }
+  :global(.calendar-cell),
+  :global(.calendar-cell-empty) {
+    width: calc(100% / 7);
+    height: 48px;
+  }
+
+  :global(.calendar-week-day) {
+    width: calc(100% / 7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.calendar-header) {
+    padding: var(--spacing-16) 0;
+    margin-bottom: var(--spacing-8);
+  }
+
+  :global(.calendar-week-day-content) {
+    color: var(--gray-600);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: var(--text-12);
+    text-align: center;
+  }
+
+  :global(.calendar-nav) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-8);
+  }
+
+  :global(.calendar-nav-prev button),
+  :global(.calendar-nav-next button) {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  :global(.calendar-nav-date) {
+    margin: 0 auto;
+  }
+
+  :global(.calendar-nav-date span) {
+    font-weight: 600;
+    font-size: var(--text-24);
+    color: #000;
+  }
+
+  :global(.calendar-cell) {
+    font-size: var(--text-14);
+    font-weight: 600;
+    color: var(--gray-900);
+    padding: var(--spacing-4) 0;
+    border: 2px solid transparent;
+    border-radius: var(--bd-radius-4);
+    text-align: center;
+    vertical-align: super;
+    cursor: pointer;
+
+    &:global(.range) {
+      border-radius: 0;
+      background-color: var(--primary-dimmed-color);
+    }
+
+    &:global(.rangeStart) {
+      background-color: var(--secondary-color);
+      border-radius: var(--bd-radius-4) 0 0 var(--bd-radius-4);
+      color: var(--white);
+    }
+
+    &:global(.rangeEnd) {
+      background-color: var(--secondary-color);
+      border-radius: 0 var(--bd-radius-4) var(--bd-radius-4) 0;
+      color: var(--white);
+    }
+
+    &:global(.rangeBothEnds) {
+      border-radius: var(--bd-radius-4);
+    }
+
+    &:disabled,
+    &:global(.disabled) {
+      color: var(--disabled-color);
+      cursor: default;
+    }
+
+    &:not(:disabled):not(:global(.disabled)):hover {
+      border-color: var(--secondary-color);
+    }
+  }
+}

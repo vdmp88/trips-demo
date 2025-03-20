@@ -1,0 +1,58 @@
+{
+  "HomePage": {
+    "title": "Bonjour le monde !",
+    "banner": {
+      "cta": "Rechercher des vols",
+      "title": "Nos meilleures offres de vols à travers le Nigeria",
+      "description": "L'été est peut-être encore loin, mais ces destinations de dernière minute promettent de faire des étincelles dès maintenant."
+    }
+  },
+  "FAQ": {
+    "title": "Questions fréquemment posées",
+    "general": {
+      "title": "Questions générales",
+      "bookWithTripcheck": {
+        "question": "Est-ce que je réserve mon vol avec Tripcheck ?",
+        "answer": "Nous fonctionnons comme un moteur de métarecherche, vous permettant de trouver les meilleurs billets d'avion. Une fois que vous avez identifié l'option idéale, vous réservez directement auprès de la compagnie aérienne. Ainsi, vous pouvez inclure vos informations de fidélité et choisir vos options de vol préférées, comme les préférences de siège."
+      },
+      "airlinesDisplayed": {
+        "question": "Quelles compagnies aériennes sont affichées sur Tripcheck ?",
+        "answer": "Nous visons à établir des partenariats avec toutes les compagnies aériennes au Nigeria, mais pour l'instant, vous pouvez vérifier les vols avec Air Peace, Arik Air et Ibom Air."
+      },
+      "howTripcheckWorks": {
+        "question": "Comment fonctionne Tripcheck ?",
+        "answer": "Nous sommes un moteur de recherche pour les vols. Nous recherchons parmi toutes les principales compagnies aériennes en ligne, vous permettant de comparer les prix des vols et autres frais de voyage à travers le Nigeria en un seul endroit. Après avoir sélectionné le meilleur vol, vous pouvez réserver directement auprès du fournisseur."
+      },
+      "extraFees": {
+        "question": "Dois-je payer des frais supplémentaires sur Tripcheck ?",
+        "answer": "Tripcheck est conçu pour offrir une meilleure expérience utilisateur dans la recherche de vols à travers le Nigeria. Nous ne prenons aucune commission auprès des clients. Le prix reste le même que sur les sites des compagnies aériennes."
+      },
+      "lowCo2Flights": {
+        "question": "Puis-je réserver des vols qui émettent moins de CO₂ ?",
+        "answer": "Malheureusement, cette fonctionnalité n'est pas encore disponible, mais nous sommes en train d'ajouter ces informations aux détails des vols."
+      }
+    },
+    "tickets": {
+      "title": "Billets",
+      "afterBooking": {
+        "question": "Que se passe-t-il après avoir réservé mon vol ?",
+        "answer": "Vous recevrez un e-mail de confirmation de réservation de vol et toutes les informations nécessaires de la part de la compagnie aérienne que vous avez utilisée pour votre réservation. Si vous avez des questions concernant votre réservation ou souhaitez modifier ou annuler votre vol, veuillez les contacter directement."
+      },
+      "modifyOrRefund": {
+        "question": "Comment modifier ou me faire rembourser mes billets d'avion ?",
+        "answer": "Si vous avez des questions concernant votre réservation ou souhaitez modifier, annuler ou vous faire rembourser votre vol, veuillez contacter directement la compagnie aérienne avec laquelle vous avez réservé le vol."
+      },
+      "infantsNeedTicket": {
+        "question": "Les nourrissons ont-ils besoin d'un billet ?",
+        "answer": "Les nourrissons sont généralement classés comme des voyageurs de moins de 2 ans. Certaines compagnies aériennes peuvent exiger une preuve d'âge, comme un certificat de naissance. La plupart des compagnies aériennes autorisent les nourrissons à voyager sur les genoux d'un adulte. Cependant, si vous préférez un siège séparé pour la sécurité et le confort, vous devrez peut-être acheter un billet au tarif enfant."
+      }
+    },
+    "marketing": {
+      "title": "Marketing",
+      "contactMarketing": {
+        "question": "Qui dois-je contacter pour des opportunités de marketing et de partenariat ?",
+        "answer": "Veuillez envoyer un e-mail à ..."
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "HomePage": {
+    "title": "Hello world!",
+    "banner": {
+      "cta": "Search flights",
+      "title": "Our best flight deals across Nigeria",
+      "description": "Summer might be a long way off, but these last-minute destinations are set to sizzle right now."
+    }
+  },
+  "FAQ": {
+    "title": "Frequently Asked Questions",
+    "general": {
+      "title": "General",
+      "bookWithTripcheck": {
+        "question": "Do I book my flight with Tripcheck?",
+        "answer": "We operate as a meta search engine, allowing you to find the best flight tickets. Once you've identified your ideal option, you'll book directly through the airline. This way, you can include any loyalty information and choose your preferred flight options, like seating preferences."
+      },
+      "airlinesDisplayed": {
+        "question": "What airlines are displayed on Tripcheck?",
+        "answer": "We aim to partner with every airline in Nigeria, however for now you are able to check the flights with Air Peace, Arik Air, Ibom Air."
+      },
+      "howTripcheckWorks": {
+        "question": "How does Tripcheck work?",
+        "answer": "We are a search engine for flights. We search through all the leading airlines online, enabling you to compare flight prices and other travel expenses across Nigeria in a single location. After selecting the best flight, you can book directly with the provider."
+      },
+      "extraFees": {
+        "question": "Do I pay extra fees on Tripcheck?",
+        "answer": "Tripcheck is designed for the better user experience in searching flights across Nigeria. We do not take any commissions from the customers. The price stays the same as on the airlines' websites."
+      },
+      "lowCo2Flights": {
+        "question": "Can I book flights that emit less CO₂?",
+        "answer": "Unfortunately this function is not available yet but we are in progress of adding this information to the flights details info."
+      }
+    },
+    "tickets": {
+      "title": "Tickets",
+      "afterBooking": {
+        "question": "What happens after I booked my flight?",
+        "answer": "You will receive your flight booking confirmation email and all necessary information from the airline you used for your reservation. If you have any questions regarding your booking or wish to modify or cancel your flight, please contact them directly."
+      },
+      "modifyOrRefund": {
+        "question": "How do I modify or refund the flight tickets?",
+        "answer": "If you have any questions regarding your booking or wish to modify, cancel or refund your flight, please contact directly the airlines you booked the flight with."
+      },
+      "infantsNeedTicket": {
+        "question": "Do infants need a ticket?",
+        "answer": "Infants are typically classified as travelers below 2 years old. Some airlines may require proof of age, such as a birth certificate. Most airlines allow infants to travel on an adult's lap. However, if you prefer a separate seat for safety and comfort, you may need to purchase a child fare ticket."
+      }
+    },
+    "marketing": {
+      "title": "Marketing",
+      "contactMarketing": {
+        "question": "Who do I contact for marketing and partnership opportunities?",
+        "answer": "Please send an email to ..."
+      }
+    }
+  }
+}

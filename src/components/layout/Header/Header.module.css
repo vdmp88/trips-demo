@@ -1,0 +1,96 @@
+.header {
+  background-color: var(--primary-color);
+  padding: var(--spacing-16) 0;
+}
+
+.headerWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.headerButton {
+  color: var(--white);
+  border: 0;
+  border-radius: var(--bd-radius-4);
+  padding: var(--spacing-8) var(--spacing-12);
+  background-color: transparent;
+  transition: 0.3s background-color;
+  font-weight: 600;
+  font-size: var(--text-18);
+  line-height: var(--text-24);
+  cursor: pointer;
+  outline: none;
+}
+
+.headerButton:hover,
+.headerButton:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.selectItem {
+  display: flex;
+  gap: var(--spacing-12);
+}
+
+.selectItem img {
+  border-radius: 50%;
+}
+
+.languageWrapper :global(.select__menu) {
+  min-width: 220px;
+}
+
+.currencyWrapper :global(.select__menu) {
+  min-width: 280px;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.currencyWrapper :global(.select__menu),
+.languageWrapper :global(.select__menu) {
+  display: flex;
+  flex-direction: column;
+  left: initial;
+  right: 0;
+  bottom: -8px;
+  z-index: 1;
+}
+
+.header :global(.select__menu) button {
+  display: flex;
+  padding: var(--spacing-12) var(--spacing-16);
+}
+
+.header :global(.select__menu) button:hover {
+  background-color: var(--white-50);
+  position: relative;
+}
+
+.header :global(.select__menu) button:hover::before {
+  content: url('/svg/check.svg');
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+}
+
+.localeSettings {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.mobileNavigation {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .currencyWrapper,
+  .languageWrapper {
+    display: none;
+  }
+
+  .mobileNavigation {
+    display: flex;
+  }
+}

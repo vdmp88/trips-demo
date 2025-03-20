@@ -1,0 +1,58 @@
+{
+  "HomePage": {
+    "title": "你好，世界！",
+    "banner": {
+      "cta": "搜索航班",
+      "title": "我们在尼日利亚的最佳航班优惠",
+      "description": "夏天可能还远，但这些最后一分钟的目的地现在就准备好让你热血沸腾。"
+    }
+  },
+  "FAQ": {
+    "title": "常见问题",
+    "general": {
+      "title": "常见问题",
+      "bookWithTripcheck": {
+        "question": "我通过 Tripcheck 预订航班吗？",
+        "answer": "我们作为一个元搜索引擎运行，让您找到最佳机票。一旦您找到理想的选择，您将直接通过航空公司预订。这样，您可以添加任何忠诚度信息并选择您喜欢的航班选项，例如座位偏好。"
+      },
+      "airlinesDisplayed": {
+        "question": "Tripcheck 上显示哪些航空公司？",
+        "answer": "我们的目标是与尼日利亚的所有航空公司合作，但目前您可以查看 Air Peace、Arik Air 和 Ibom Air 的航班。"
+      },
+      "howTripcheckWorks": {
+        "question": "Tripcheck 如何运作？",
+        "answer": "我们是航班搜索引擎。我们搜索所有领先的在线航空公司，让您在一个地方比较尼日利亚的航班价格和其他旅行费用。选择最佳航班后，您可以直接与供应商预订。"
+      },
+      "extraFees": {
+        "question": "我在 Tripcheck 上需要支付额外费用吗？",
+        "answer": "Tripcheck 旨在为搜索尼日利亚航班提供更好的用户体验。我们不向客户收取任何佣金。价格与航空公司网站上的相同。"
+      },
+      "lowCo2Flights": {
+        "question": "我可以预订排放更少 CO₂ 的航班吗？",
+        "answer": "遗憾的是，此功能尚未可用，但我们正在努力将这些信息添加到航班详情中。"
+      }
+    },
+    "tickets": {
+      "title": "机票",
+      "afterBooking": {
+        "question": "预订航班后会发生什么？",
+        "answer": "您将收到航空公司发送的航班预订确认邮件以及所有必要信息。如果您对预订有任何疑问或希望修改或取消航班，请直接联系他们。"
+      },
+      "modifyOrRefund": {
+        "question": "如何修改或退款机票？",
+        "answer": "如果您对预订有任何疑问或希望修改、取消或退款您的航班，请直接联系您预订航班的航空公司。"
+      },
+      "infantsNeedTicket": {
+        "question": "婴儿需要机票吗？",
+        "answer": "婴儿通常被分类为2岁以下的旅客。一些航空公司可能要求提供年龄证明，例如出生证明。大多数航空公司允许婴儿坐在成人的膝上旅行。然而，如果您为了安全和舒适更喜欢单独的座位，您可能需要购买儿童票价的机票。"
+      }
+    },
+    "marketing": {
+      "title": "营销",
+      "contactMarketing": {
+        "question": "我该联系谁关于营销和合作机会？",
+        "answer": "请发送电子邮件至 ..."
+      }
+    }
+  }
+}

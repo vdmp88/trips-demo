@@ -1,0 +1,96 @@
+@import './fonts.css';
+@import './variables.css';
+@import './normalize.css';
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  padding: 0;
+  margin: 0;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  /* temporary */
+}
+
+body {
+  font-family: var(--primary-font);
+  font-size: var(--text-14);
+  line-height: var(--text-20);
+  color: var(--gray-900);
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  outline: none;
+  border: none;
+  appearance: none;
+  cursor: pointer;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  color: #000;
+}
+
+input {
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}

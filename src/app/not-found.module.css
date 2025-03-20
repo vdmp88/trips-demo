@@ -1,0 +1,26 @@
+.imageWrapper {
+  margin-bottom: var(--spacing-16);
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+.titleWrapper {
+  margin-bottom: var(--spacing-16);
+}
+
+.descriptionWrapper {
+  margin-bottom: var(--spacing-40);
+}
+
+.descriptionWrapper p {
+  font-size: var(--text-14);
+  line-height: var(--text-20);
+}
+
+.buttonWrapper {
+  max-width: 215px;
+  width: 100%;
+}

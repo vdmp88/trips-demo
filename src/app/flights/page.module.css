@@ -1,0 +1,34 @@
+.pageWrapper {
+  background: var(--gray-50);
+  padding-top: var(--spacing-24);
+}
+
+.sectionWrapper {
+  display: flex;
+  gap: var(--spacing-24);
+}
+
+.filterWrapper {
+  max-width: 300px;
+  width: 100%;
+  background: pink;
+}
+
+.sortWrapper {
+  margin-bottom: var(--spacing-24);
+}
+
+.ticketListWrapper {
+  max-width: 740px;
+  width: 100%;
+}
+
+@media (max-width: 1050px) {
+  .filterWrapper {
+    display: none;
+  }
+
+  .sectionWrapper {
+    justify-content: center;
+  }
+}

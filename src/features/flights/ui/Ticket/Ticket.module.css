@@ -1,0 +1,422 @@
+.ticketHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-24) var(--spacing-16);
+}
+
+.ticketInnerWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 372px;
+  width: 100%;
+  gap: var(--spacing-32);
+}
+
+@media (max-width: 720px) {
+  .ticketInnerWrapper {
+    max-width: 100%;
+  }
+}
+
+.ticketInformation {
+  position: relative;
+  display: flex;
+  gap: var(--spacing-24);
+  max-width: 372px;
+  width: 100%;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--bd-radius-4);
+  padding-top: 18px;
+  display: flex;
+}
+
+.departureInformation {
+  margin-left: -8px;
+}
+
+.departureInformation,
+.arrivalInformation {
+  padding-top: 18px;
+  max-width: 75px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+@media (max-width: 767px) {
+  .departureInformation,
+  .arrivalInformation {
+    max-width: 65px;
+  }
+}
+
+@media (max-width: 450px) {
+  .departureInformation,
+  .arrivalInformation {
+    gap: var(--spacing-4);
+    padding-top: 0;
+    max-width: max-content;
+  }
+
+  .departureInformation {
+    margin-left: 0;
+  }
+
+  .ticketInformation h2 {
+    font-size: var(--text-14);
+    line-height: var(--text-20);
+  }
+
+  .titleInformation span {
+    line-height: var(--text-20);
+  }
+}
+
+.departureInformation span,
+.arrivalInformation span {
+  color: var(--gray-500);
+}
+
+.flightDuration {
+  text-align: center;
+  color: var(--gray-500);
+}
+
+.durationIcon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.line {
+  width: 24px;
+  border-bottom: 1px solid var(--gray-400);
+  border-radius: 1px;
+}
+
+.ticketActionWrapper {
+  display: flex;
+  position: relative;
+}
+
+.ticketActionWrapper::before,
+.ticketActionSkeleton::before {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: calc(100% + 48px);
+  background: var(--gray-200);
+  left: -48px;
+  top: -24px;
+}
+
+@media (max-width: 767px) {
+  .ticketActionWrapper::before {
+    left: -24px;
+  }
+}
+
+.sameAirlineTicket .ticketActionWrapper {
+  align-items: center;
+}
+
+.ticketAction {
+  display: flex;
+}
+
+.ticketCTA {
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: var(--spacing-24);
+  gap: var(--spacing-8);
+}
+
+.mobileExpandButton {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .ticketHeaderCTA,
+  .mobileExpandButton {
+    display: flex;
+  }
+
+  .sameAirlineTicket .mobileExpandButton {
+    display: none;
+  }
+
+  .ticketInnerWrapper {
+    position: relative;
+  }
+
+  .sameAirlineTicket .mobileExpandButton:last-child {
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 1090px) {
+  .ticketInformation::after,
+  .ticketHeaderSkeleton::after {
+    right: 0;
+  }
+}
+
+.expandButton {
+  cursor: pointer;
+  display: flex;
+  height: 48px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  border-radius: var(--bd-radius-8);
+}
+
+.expandButton:hover,
+.expandButton.active {
+  background: var(--gray-200);
+}
+
+.ticketDetailsList {
+  padding: var(--spacing-24) var(--spacing-32) var(--spacing-40);
+  border-top: 1px solid var(--gray-200);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+
+@media (max-width: 720px) {
+  .ticketDetailsList {
+    padding: var(--spacing-24) var(--spacing-16);
+  }
+}
+
+.ticketContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+
+.ticketContent:not(:first-child) {
+  border-top: 0;
+}
+
+.departureDate {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 100px;
+  background: var(--gray-900);
+}
+
+.airlineName,
+.travelTime {
+  color: var(--gray-500);
+}
+
+.airlineWrapper {
+  position: relative;
+  margin-left: var(--spacing-24);
+}
+
+.airlineWrapper::before {
+  content: url('/svg/connect.svg');
+  position: absolute;
+  left: -24px;
+}
+
+.departureAirport,
+.travelTime {
+  margin-bottom: var(--spacing-12);
+}
+
+.arrivalAirport {
+  margin-bottom: var(--spacing-24);
+}
+
+.mobileAction {
+  display: none;
+}
+
+.skeleton {
+  background: var(--white);
+  padding: var(--spacing-24) var(--spacing-16);
+  border-radius: var(--bd-radius-16);
+  animation: pulse 1.5s infinite;
+  display: flex;
+}
+
+.ticketHeaderSkeleton {
+  position: relative;
+  display: flex;
+  flex: 1;
+}
+
+.skeletonInformation {
+  margin-right: var(--spacing-56);
+  max-width: 372px;
+  width: 100%;
+  height: 70px;
+  border-radius: var(--bd-radius-4);
+  background: var(--gray-200);
+}
+
+.ticketActionSkeleton {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 160px;
+  width: 100%;
+  gap: var(--spacing-8);
+  margin: 0 var(--spacing-40);
+}
+
+.priceSkeleton,
+.actionButtonSkeleton {
+  height: 28px;
+  width: 100%;
+  background: var(--gray-200);
+  border-radius: var(--bd-radius-4);
+}
+
+.actionButtonSkeleton {
+  height: 48px;
+}
+
+.expandButtonSkeleton {
+  height: 48px;
+  width: 48px;
+  background: var(--gray-200);
+  border-radius: var(--bd-radius-4);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.expandMobileButtonSkeleton {
+  display: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .ticketHeader {
+    min-height: 116px;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-24) var(--spacing-8);
+  }
+
+  .ticketActionWrapper,
+  .ticketInformation::after {
+    display: none;
+  }
+
+  .mobileAction {
+    border-top: 1px solid var(--gray-200);
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-24) var(--bd-radius-8);
+  }
+
+  .mobileAction .ticketCTA {
+    flex-direction: row;
+    margin: 0;
+    gap: var(--bd-radius-16);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .mobileAction .expandButton {
+    display: none;
+  }
+
+  .expandButton {
+    margin: 0;
+  }
+
+  .ticketInformation:before {
+    left: -40px;
+  }
+
+  .skeleton {
+    flex-direction: column;
+    height: auto;
+    gap: var(--spacing-48);
+  }
+
+  .ticketHeaderSkeleton {
+    height: 116px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ticketHeaderSkeleton::after,
+  .expandButtonSkeleton {
+    display: none;
+  }
+
+  .expandMobileButtonSkeleton {
+    display: flex;
+    height: 48px;
+    max-width: 48px;
+    width: 100%;
+    background: var(--gray-200);
+    border-radius: var(--bd-radius-4);
+  }
+
+  .ticketActionSkeleton {
+    flex-direction: row;
+    margin: 0 auto;
+    max-width: 250px;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .ticketHeaderSkeleton::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: calc(100% + 32px);
+    background: var(--gray-200);
+    bottom: -24px;
+    left: -16px;
+  }
+
+  .ticketActionSkeleton::before {
+    display: none;
+  }
+
+  .priceSkeleton {
+    height: 48px;
+  }
+}
