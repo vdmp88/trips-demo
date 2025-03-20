@@ -7,11 +7,10 @@ import styles from './page.module.css';
 import { SortTickets } from '@/app/flights/SortTickets/SortTickets';
 import { redirect } from 'next/navigation';
 
-export default async function Flights({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+type PageProps = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+export default async function Flights({ searchParams }: PageProps) {
   const params = await searchParams;
 
   if (!Object.keys(params).length) {
