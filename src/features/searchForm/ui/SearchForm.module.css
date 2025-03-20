@@ -46,7 +46,7 @@
   @media (max-width: 768px) {
     width: 100%;
 
-    :global(.search-form-input) {
+    .inputWrapper :global(.search-form-input) {
       border-radius: var(--bd-radius-8);
     }
 
