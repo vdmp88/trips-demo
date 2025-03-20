@@ -27,7 +27,7 @@
     margin-bottom: var(--spacing-8);
   }
 
-  :global(.select__menu) {
+  .inputsContainer :global(.select__menu) {
     width: 480px;
   }
 }
