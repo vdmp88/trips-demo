@@ -5,10 +5,10 @@
 
 .tripTypeItemWrapper {
   margin-right: var(--spacing-16);
+}
 
-  &:last-child {
-    margin-right: 0;
-  }
+.tripTypeItemWrapper:last-child {
+  margin-right: 0;
 }
 
 .inputsContainer {
@@ -44,36 +44,40 @@
   width: var(--input-width);
   min-width: 0;
   position: relative;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .inputWrapper {
     width: 100%;
+  }
 
-    :global(.search-form-input) {
-      border-radius: var(--bd-radius-8);
-    }
+  .inputWrapper :global(.search-form-input) {
+    border-radius: var(--bd-radius-8);
+  }
 
-    :global(.search-form-input__title) {
-      display: none;
-    }
+  .inputWrapper :global(.search-form-input__title) {
+    display: none;
   }
 }
 
 .inputWrapper:first-child :global(.search-form-input) {
   border-radius: var(--bd-radius-8) 0 0 var(--bd-radius-8);
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .inputWrapper:first-child :global(.search-form-input) {
     border-radius: var(--bd-radius-8);
   }
 }
 
-.inputWrapper:last-child {
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .inputWrapper:last-child {
     width: calc(50% - 2px);
   }
+}
 
-  :global(.search-form-input) {
-    border-radius: 0 var(--bd-radius-8) var(--bd-radius-8) 0;
-  }
+.inputWrapper:last-child :global(.search-form-input) {
+  border-radius: 0 var(--bd-radius-8) var(--bd-radius-8) 0;
 }
 
 .controls {
@@ -81,27 +85,30 @@
   flex-direction: row;
   justify-content: space-between;
   position: relative;
+}
 
-  @media (max-width: 980px) {
+@media (max-width: 980px) {
+  .controls {
     flex-direction: column;
   }
 }
 
-.showOnMobile {
-  @media (min-width: 769px) {
+@media (min-width: 769px) {
+  .showOnMobile {
     display: none;
   }
 }
 
-.hideOnMobile {
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .hideOnMobile {
     display: none;
   }
 }
 
 .datesInput {
   width: calc(50% - 2px);
-  :global(.search-form-input) {
-    border-radius: var(--bd-radius-8) 0 0 var(--bd-radius-8);
-  }
+}
+
+.datesInput :global(.search-form-input) {
+  border-radius: var(--bd-radius-8) 0 0 var(--bd-radius-8);
 }
