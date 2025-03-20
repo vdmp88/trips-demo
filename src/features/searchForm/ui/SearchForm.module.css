@@ -5,10 +5,10 @@
 
 .tripTypeItemWrapper {
   margin-right: var(--spacing-16);
-}
 
-.tripTypeItemWrapper:last-child {
-  margin-right: 0;
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .inputsContainer {
@@ -21,17 +21,15 @@
   flex: 1;
   margin-right: var(--spacing-8);
   flex-wrap: wrap;
-}
 
-@media (max-width: 980px) {
-  .inputsContainer {
+  @media (max-width: 980px) {
     margin-right: 0;
     margin-bottom: var(--spacing-8);
   }
-}
 
-.inputsContainer :global(.select__menu) {
-  width: 480px;
+  :global(.select__menu) {
+    width: 480px;
+  }
 }
 
 .inputsContainer.inputsContainerOneWay {
@@ -44,40 +42,36 @@
   width: var(--input-width);
   min-width: 0;
   position: relative;
-}
 
-@media (max-width: 768px) {
-  .inputWrapper {
+  @media (max-width: 768px) {
     width: 100%;
-  }
 
-  .inputWrapper :global(.search-form-input) {
-    border-radius: var(--bd-radius-8);
-  }
+    :global(.search-form-input) {
+      border-radius: var(--bd-radius-8);
+    }
 
-  .inputWrapper :global(.search-form-input__title) {
-    display: none;
+    :global(.search-form-input__title) {
+      display: none;
+    }
   }
 }
 
 .inputWrapper:first-child :global(.search-form-input) {
   border-radius: var(--bd-radius-8) 0 0 var(--bd-radius-8);
-}
 
-@media (max-width: 768px) {
-  .inputWrapper:first-child :global(.search-form-input) {
+  @media (max-width: 768px) {
     border-radius: var(--bd-radius-8);
   }
 }
 
-@media (max-width: 768px) {
-  .inputWrapper:last-child {
+.inputWrapper:last-child {
+  @media (max-width: 768px) {
     width: calc(50% - 2px);
   }
-}
 
-.inputWrapper:last-child :global(.search-form-input) {
-  border-radius: 0 var(--bd-radius-8) var(--bd-radius-8) 0;
+  :global(.search-form-input) {
+    border-radius: 0 var(--bd-radius-8) var(--bd-radius-8) 0;
+  }
 }
 
 .controls {
@@ -85,30 +79,27 @@
   flex-direction: row;
   justify-content: space-between;
   position: relative;
-}
 
-@media (max-width: 980px) {
-  .controls {
+  @media (max-width: 980px) {
     flex-direction: column;
   }
 }
 
-@media (min-width: 769px) {
-  .showOnMobile {
+.showOnMobile {
+  @media (min-width: 769px) {
     display: none;
   }
 }
 
-@media (max-width: 768px) {
-  .hideOnMobile {
+.hideOnMobile {
+  @media (max-width: 768px) {
     display: none;
   }
 }
 
 .datesInput {
   width: calc(50% - 2px);
-}
-
-.datesInput :global(.search-form-input) {
-  border-radius: var(--bd-radius-8) 0 0 var(--bd-radius-8);
+  :global(.search-form-input) {
+    border-radius: var(--bd-radius-8) 0 0 var(--bd-radius-8);
+  }
 }
