@@ -56,12 +56,12 @@
 .clearInput {
   padding: var(--spacing-12);
   margin: calc(var(--spacing-12) * -1);
+}
 
-  img {
-    width: 24px;
-    height: 24px;
-    display: block;
-  }
+.clearInput img {
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 .header {
@@ -69,28 +69,30 @@
   flex-direction: row;
   padding-right: 143px;
   margin-bottom: var(--spacing-40);
+}
 
-  :global(.select) {
-    max-width: 143px;
+.header :global(.select) {
+  max-width: 143px;
+}
 
-    :global(.select__menu) {
-      width: 300px;
-    }
-  }
+.header :global(.select__menu) {
+  width: 300px;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .header {
     flex-direction: column-reverse;
     padding-right: 0;
     margin-top: var(--spacing-24);
     margin-bottom: var(--spacing-24);
+  }
 
-    :global(.select) {
-      max-width: 100%;
+  .header :global(.select) {
+    max-width: 100%;
+  }
 
-      :global(.select__menu) {
-        width: 100%;
-      }
-    }
+  .header :global(.select__menu) {
+    width: 100%;
   }
 }
 

@@ -82,4 +82,12 @@
   --text-62: 62px;
 
   --primary-font: 'Montserrat', serif;
+
+  --container-padding: var(--spacing-40);
+}
+
+@media (max-width: 600px) {
+  :root {
+    --container-padding: var(--spacing-16);
+  }
 }

@@ -1,11 +1,3 @@
-:root {
-  --container-padding: var(--spacing-40);
-
-  @media (max-width: 600px) {
-    --container-padding: var(--spacing-16);
-  }
-}
-
 .container {
   padding: 0 var(--container-padding);
   max-width: calc(1224px + var(--container-padding) * 2);
