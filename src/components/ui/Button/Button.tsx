@@ -8,7 +8,7 @@ type ButtonProps = {
   href?: string;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'outline';
   className?: string;
   isExternal?: boolean;
 };

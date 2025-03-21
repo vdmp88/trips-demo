@@ -46,6 +46,10 @@
   position: relative;
 }
 
+.inputWrapper :global(.search-form-input) {
+  height: 100%;
+}
+
 @media (max-width: 768px) {
   .inputWrapper {
     width: 100%;

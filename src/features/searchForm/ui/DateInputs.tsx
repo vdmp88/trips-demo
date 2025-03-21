@@ -8,15 +8,25 @@ import {
   formatDateForInputShort,
 } from '@/features/searchForm/modules/formatDateForInput';
 import classNames from 'classnames';
+import { useDispatch } from 'react-redux';
+import { setSingleFormField } from '@/features/searchForm/store/searchFormSlice';
+import { useEffect } from 'react';
 
 type Props = {
   setShowCalendar: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const DateInputs: React.FC<Props> = ({ setShowCalendar }) => {
+  const dispatch = useDispatch();
   const tripType = useAppSelector(
     (state) => state.searchForm.singleForm.tripType
   );
+
+  useEffect(() => {
+    if (tripType === 'oneWay') {
+      dispatch(setSingleFormField('returnDate', null));
+    }
+  }, [dispatch, tripType]);
 
   const departDate = useAppSelector(
     (state) => state.searchForm.singleForm.departDate
@@ -53,6 +63,10 @@ const DateInputs: React.FC<Props> = ({ setShowCalendar }) => {
           type="button"
           onClick={() => setShowCalendar(true)}
           error={!!departError || !!returnError}
+          onClear={() => {
+            dispatch(setSingleFormField('departDate', null));
+            dispatch(setSingleFormField('returnDate', null));
+          }}
         />
       </div>
 
@@ -65,6 +79,10 @@ const DateInputs: React.FC<Props> = ({ setShowCalendar }) => {
           type="button"
           onClick={() => setShowCalendar(true)}
           error={!!departError}
+          onClear={() => {
+            dispatch(setSingleFormField('departDate', null));
+            dispatch(setSingleFormField('returnDate', null));
+          }}
         />
       </div>
 
@@ -77,6 +95,7 @@ const DateInputs: React.FC<Props> = ({ setShowCalendar }) => {
             value={returnDate ? formatDateForInput(returnDate) : ''}
             type="button"
             onClick={() => setShowCalendar(true)}
+            onClear={() => dispatch(setSingleFormField('returnDate', null))}
             error={!!returnError}
           />
         </div>

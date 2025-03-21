@@ -3,12 +3,10 @@ import styles from './SingleCalendarPopup.module.css';
 import Select from '@/components/ui/Select';
 import { setSingleFormField } from '@/features/searchForm/store/searchFormSlice';
 import Image from 'next/image';
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef } from 'react';
 import BaseSelectItem from '@/components/ui/Select/BaseSelectItem';
-import BaseTabButton from '@/components/ui/Tabs/BaseTabButton';
 import Calendar from '@/libraries/Calendar';
 import { Button } from '@/components/ui/Button/Button';
-import { parseISO } from 'date-fns';
 import classNames from 'classnames';
 import OneWayIcon from '@/icons/oneway.svg';
 import RoundTripIcon from '@/icons/roundtrip.svg';
@@ -16,15 +14,15 @@ import CloseIcon from '@/icons/close.svg';
 import { formatDateForInput } from '@/features/searchForm/modules/formatDateForInput';
 import PopupBase from '@/components/ui/PopupBase/PopupBase';
 import PopupBaseMobileHeader from '@/components/ui/PopupBase/PopupBaseMobileHeader';
-import { toast } from 'sonner';
 
 type Props = {
   show: boolean;
-  initialStartDate?: string | null;
-  initialEndDate?: string | null;
+  endDate: string | null;
+  startDate: string | null;
   onClosePress: () => void;
-  onApplyPress: (startDate: string, endDate?: string) => void;
-  dateNotSelectedError?: string;
+  onApplyPress: () => void;
+  setStartDate: (date: string | null) => void;
+  setEndDate: (date: string | null) => void;
 };
 
 const tripData = [
@@ -38,21 +36,14 @@ const SingleCalendarPopup = forwardRef<HTMLDivElement, Props>(
       show,
       onApplyPress,
       onClosePress,
-      initialEndDate,
-      initialStartDate,
-      dateNotSelectedError,
+      startDate,
+      endDate,
+      setEndDate,
+      setStartDate,
     },
     ref
   ) => {
-    const [startDate, setStartDate] = useState<Date | null>(
-      initialStartDate ? parseISO(initialStartDate) : null
-    );
-
-    const [endDate, setEndDate] = useState<Date | null>(
-      initialEndDate ? parseISO(initialEndDate) : null
-    );
-    const [flexible, setFlexible] = useState(false);
-    const [selectEndDate, setSelectEndDate] = useState(false);
+    // const [flexible, setFlexible] = useState(false);
 
     const tripType = useAppSelector(
       (state) => state.searchForm.singleForm.tripType
@@ -61,19 +52,10 @@ const SingleCalendarPopup = forwardRef<HTMLDivElement, Props>(
     const maxDate = new Date();
     maxDate.setFullYear(maxDate.getFullYear() + 1);
 
-    useEffect(() => {
-      if (tripType === 'oneWay') setEndDate(null);
-    }, [tripType]);
-
     const dispatch = useAppDispatch();
 
     const handleApply = () => {
-      if (!startDate || (tripType === 'round' && !endDate)) {
-        toast.info(dateNotSelectedError ?? 'Please select a date');
-        return;
-      }
-
-      onApplyPress(startDate.toISOString(), endDate?.toISOString());
+      onApplyPress();
     };
 
     const renderSelectItem = (item: (typeof tripData)[number]) => (
@@ -85,6 +67,14 @@ const SingleCalendarPopup = forwardRef<HTMLDivElement, Props>(
         <span>{item.label}</span>
       </BaseSelectItem>
     );
+
+    const onStartDateChange = (date: Date | null) => {
+      setStartDate(date?.toISOString() ?? null);
+    };
+
+    const onEndDateChange = (date: Date | null) => {
+      setEndDate(date?.toISOString() ?? null);
+    };
 
     if (!show) return null;
 
@@ -132,7 +122,6 @@ const SingleCalendarPopup = forwardRef<HTMLDivElement, Props>(
                   className={styles.clearInput}
                   onClick={() => {
                     setEndDate(null);
-                    setSelectEndDate(true);
                   }}
                 >
                   <Image src={CloseIcon} alt="clear-return" />
@@ -151,7 +140,7 @@ const SingleCalendarPopup = forwardRef<HTMLDivElement, Props>(
             value={tripData.find((item) => item.value === tripType) ?? null}
             renderItem={renderSelectItem}
           />
-          <div className={styles.tabs}>
+          {/* <div className={styles.tabs}>
             <BaseTabButton
               text="Specific dates"
               active={!flexible}
@@ -162,7 +151,7 @@ const SingleCalendarPopup = forwardRef<HTMLDivElement, Props>(
               active={flexible}
               onClick={() => setFlexible(true)}
             />
-          </div>
+          </div> */}
         </div>
 
         <Calendar
@@ -170,12 +159,10 @@ const SingleCalendarPopup = forwardRef<HTMLDivElement, Props>(
           showAdjacementDays={false}
           startDate={startDate}
           endDate={endDate}
-          onStartDateChange={setStartDate}
-          onEndDateChange={setEndDate}
+          onStartDateChange={onStartDateChange}
+          onEndDateChange={onEndDateChange}
           range={tripType === 'round'}
           calendars={12}
-          selectEndDate={selectEndDate}
-          onSelectEndChange={setSelectEndDate}
           minDate={new Date()}
           maxDate={maxDate}
         />

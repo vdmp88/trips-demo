@@ -133,7 +133,7 @@
   .calendar.calendar {
     flex-direction: column;
     margin-bottom: var(--spacing-16);
-    height: calc(100dvh - 444px);
+    height: calc(100dvh - (var(--container-padding) * 2) - 352px);
     overflow: auto;
   }
 

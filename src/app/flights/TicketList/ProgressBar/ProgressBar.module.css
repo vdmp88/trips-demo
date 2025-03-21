@@ -1,14 +1,50 @@
 .progressContainer {
   width: 100%;
-  height: 10px;
-  background-color: #e0e0e0;
-  border-radius: 5px;
+  background-color: var(--gray-100);
+}
+
+.progressWrapper {
+  width: 100%;
+  height: 6px;
+  background-color: var(--gray-200);
+  border-radius: var(--bd-radius-4);
   overflow: hidden;
+  position: relative;
 }
 
 .progressBar {
   height: 100%;
-  background-color: #4caf50;
-  border-radius: 5px;
+  width: 0;
+  background-color: var(--secondary-color);
+  border-radius: var(--bd-radius-4);
   transition: width 0.3s ease-in-out;
+}
+
+.textWrapper {
+  padding: 25px 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+@keyframes colorAnimation {
+  0% {
+    fill: #2674ea;
+  }
+  25% {
+    fill: #94cefc;
+  }
+  50% {
+    fill: #dbedfe;
+  }
+  75% {
+    fill: #bfe1fe;
+  }
+  100% {
+    fill: #2674ea;
+  }
+}
+
+.loader rect {
+  animation: colorAnimation 1.5s infinite ease-in-out alternate;
 }

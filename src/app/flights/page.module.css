@@ -23,6 +23,26 @@
   width: 100%;
 }
 
+.scrollToTop {
+  position: fixed;
+  z-index: 2;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: var(--drop-shadow-100);
+}
+
+.scrollToTop button {
+  background-color: var(--white);
+  width: 56px;
+  height: 56px;
+  padding: 0;
+}
+
+.scrollToTop button svg {
+  width: 24px;
+  height: 24px;
+}
+
 @media (max-width: 1050px) {
   .filterWrapper {
     display: none;

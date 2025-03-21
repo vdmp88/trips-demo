@@ -42,8 +42,11 @@ a.button {
   color: var(--white);
 }
 
+.outline:hover path {
+  fill: var(--white);
+  stroke: var(--white);
+}
+
 .large {
   padding: 26px, 24px;
 }
-
-/* add disabled, focus */

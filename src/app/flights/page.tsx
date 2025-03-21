@@ -6,6 +6,8 @@ import Section from '@/components/layout/Section';
 import styles from './page.module.css';
 import { SortTickets } from '@/app/flights/SortTickets/SortTickets';
 import { redirect } from 'next/navigation';
+import { ScrollToTop } from '@/app/flights/ScrollToTop';
+import { ProgressBar } from '@/app/flights/TicketList/ProgressBar/ProgressBar';
 
 type PageProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -20,6 +22,9 @@ export default async function Flights({ searchParams }: PageProps) {
   return (
     <>
       <Search />
+      <div>
+        <ProgressBar />
+      </div>
       <Section className={styles.pageWrapper}>
         <Container>
           <div className={styles.sectionWrapper}>
@@ -31,6 +36,9 @@ export default async function Flights({ searchParams }: PageProps) {
                 <SortTickets />
               </div>
               <TicketList />
+              <div className={styles.scrollToTop}>
+                <ScrollToTop />
+              </div>
             </div>
           </div>
         </Container>

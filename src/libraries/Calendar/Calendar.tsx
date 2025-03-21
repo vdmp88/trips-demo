@@ -504,21 +504,6 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       minDate && setMinDate(convertToDateObject(minDate, selectionType));
     }, [minDate]);
 
-    const [_selectEndDate, setSelectEndDate] = useStateWithCallback(
-      selectEndDate,
-      onSelectEndChange
-    );
-    useEffect(() => {
-      setSelectEndDate(selectEndDate);
-    }, [selectEndDate]);
-
-    useEffect(() => {
-      !isInitialMount.current &&
-        typeof _selectEndDate === 'boolean' &&
-        onSelectEndChange &&
-        onSelectEndChange(_selectEndDate);
-    }, [_selectEndDate]);
-
     const [view, setView] = useStateWithCallback<'days' | 'months' | 'years'>(
       'days',
       onViewChanged
@@ -566,25 +551,19 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         if (_startDate && _endDate) {
           setStartDate(date);
           setEndDate(null);
-          setSelectEndDate(true);
           return;
         }
 
-        if (!_endDate && _selectEndDate) {
-          setSelectEndDate(false);
-
-          if (_startDate && _startDate > date) {
+        if (_startDate && !_endDate) {
+          if (_startDate > date) {
             setStartDate(date);
             setEndDate(null);
-            setSelectEndDate(true);
             return;
           }
-
           setEndDate(date);
           return;
         }
 
-        setSelectEndDate(true);
         setStartDate(date);
         return;
       }
@@ -664,7 +643,6 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   onCalendarClick={(date) => handleCalendarClick(date, index)}
                   order={index}
                   selectAdjacementDays={selectAdjacementDays}
-                  selectEndDate={_selectEndDate}
                   selectionType={selectionType}
                   showAdjacementDays={showAdjacementDays}
                   startDate={_startDate}

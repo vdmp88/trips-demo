@@ -97,14 +97,18 @@ const SearchForm: React.FC<Props> = ({ initiallyCollapsed }) => {
           <SingleCalendarPopup
             show={showCalendar}
             ref={calendarRef}
-            initialStartDate={departDate}
-            initialEndDate={returnDate}
+            startDate={departDate}
+            endDate={returnDate}
+            setStartDate={(date) => {
+              dispatch(setSingleFormField('departDate', date));
+            }}
+            setEndDate={(date) => {
+              dispatch(setSingleFormField('returnDate', date));
+            }}
             onClosePress={() => {
               setShowCalendar(false);
             }}
-            onApplyPress={(startDate, endDate) => {
-              dispatch(setSingleFormField('departDate', startDate));
-              dispatch(setSingleFormField('returnDate', endDate ?? null));
+            onApplyPress={() => {
               setShowCalendar(false);
             }}
           />

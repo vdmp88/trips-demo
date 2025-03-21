@@ -1,12 +1,16 @@
+'use client';
+
 import React from 'react';
 import styles from './MainBanner.module.css';
 import { Typography } from '@/components/ui/Typography/Typography';
 import { Button } from '@/components/ui/Button/Button';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { useScrollToTop } from '@/hooks/useScrollToTop';
 
 export const MainBanner = () => {
   const t = useTranslations('HomePage');
+  const { scrollToTop } = useScrollToTop();
 
   return (
     <div className={styles.sectionWrapper}>
@@ -19,7 +23,7 @@ export const MainBanner = () => {
             <Typography variant="medium16" text={t('banner.description')} />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button>{t('banner.cta')}</Button>
+            <Button onClick={scrollToTop}>{t('banner.cta')}</Button>
           </div>
         </div>
       </div>
@@ -32,7 +36,7 @@ export const MainBanner = () => {
         />
       </div>
       <div className={styles.mobileButton}>
-        <Button>{t('banner.cta')}</Button>
+        <Button onClick={scrollToTop}>{t('banner.cta')}</Button>
       </div>
     </div>
   );

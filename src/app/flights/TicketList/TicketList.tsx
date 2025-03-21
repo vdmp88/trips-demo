@@ -6,13 +6,13 @@ import { TicketSkeleton } from '@/features/flights/ui/Ticket/TicketSkeleton';
 import { useEffect, useMemo, useState } from 'react';
 import { searchFlights, stopSearch } from '@/features/flights/flightSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
-import { ProgressBar } from '@/app/flights/TicketList/ProgressBar/ProgressBar';
 import { useSearchParams } from 'next/navigation';
 import { TicketSameAirline } from '@/features/flights/ui/TicketSameAirline/TicketSameAirline';
 import { sortFlights } from '@/app/flights/TicketList/modules/sortFlights';
 import getFlightParams from '@/app/flights/TicketList/modules/getFlightParams';
 import { setSingleFormField } from '@/features/searchForm/store/searchFormSlice';
 import airports from '@/features/searchForm/airports.json';
+import { Button } from '@/components/ui/Button/Button';
 
 export const TicketList = () => {
   const dispatch = useAppDispatch();
@@ -23,7 +23,7 @@ export const TicketList = () => {
   const sortOption = useAppSelector((state) => state.flights.sortOption);
   const [displayedTrips, setDisplayedTrips] = useState<number>(5);
 
-  const { flightTrips, isLoading, hasInitialResults } = useAppSelector(
+  const { flightTrips, hasInitialResults } = useAppSelector(
     (state) => state.flights
   );
 
@@ -31,6 +31,8 @@ export const TicketList = () => {
     const flightParams = getFlightParams(searchParams);
 
     dispatch(searchFlights(flightParams));
+
+    console.log('TESTING USE EFFECT FOR SEARCH');
 
     const airportFrom = airports.find(
       (airport) =>
@@ -57,7 +59,7 @@ export const TicketList = () => {
   }, [dispatch, searchParams]);
 
   const handleLoadMore = () => {
-    setDisplayedTrips((prevCount) => prevCount + 10);
+    setDisplayedTrips((prevCount) => prevCount + 5);
   };
 
   const renderTickets = (trips: typeof flightTrips) => {
@@ -116,13 +118,16 @@ export const TicketList = () => {
 
   return (
     <>
-      {isLoading && <ProgressBar />}
       <div className={styles.ticketList}>
         {renderTickets(visibleFlights)}
         {displayedTrips < flightTrips.length && (
-          <button onClick={handleLoadMore} className={styles.loadMoreButton}>
-            Load More
-          </button>
+          <Button
+            variant="outline"
+            onClick={handleLoadMore}
+            className={styles.loadMoreButton}
+          >
+            View more
+          </Button>
         )}
       </div>
     </>
