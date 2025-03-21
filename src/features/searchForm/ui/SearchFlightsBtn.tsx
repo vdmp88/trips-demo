@@ -8,8 +8,6 @@ import { useAppDispatch, useAppStore } from '@/hooks/hooks';
 import { useRouter } from 'next/navigation';
 import { format } from 'date-fns';
 
-// type Props = {};
-
 const validate = (values: SearchForm['singleForm']) => {
   const errors: SearchForm['singleFormErrors'] = {};
 
@@ -40,7 +38,11 @@ const validate = (values: SearchForm['singleForm']) => {
   return errors;
 };
 
-const SearchFlightsBtn: React.FC = () => {
+type Props = {
+  onNewSearch?: () => void;
+};
+
+const SearchFlightsBtn: React.FC<Props> = ({ onNewSearch }) => {
   const store = useAppStore();
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -87,6 +89,7 @@ const SearchFlightsBtn: React.FC = () => {
         currency: 'USD',
       }).toString();
 
+      onNewSearch?.();
       router.push(`/flights?${searchParams}`);
     }
   };

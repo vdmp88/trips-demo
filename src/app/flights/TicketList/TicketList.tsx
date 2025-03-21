@@ -4,17 +4,15 @@ import { Ticket } from '@/features/flights/ui/Ticket/Ticket';
 import styles from './TicketList.module.css';
 import { TicketSkeleton } from '@/features/flights/ui/Ticket/TicketSkeleton';
 import { useEffect, useMemo, useState } from 'react';
-import {
-  CabinClass,
-  searchFlights,
-  SearchParams,
-  stopSearch,
-} from '@/features/flights/flightSlice';
+import { searchFlights, stopSearch } from '@/features/flights/flightSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import { ProgressBar } from '@/app/flights/TicketList/ProgressBar/ProgressBar';
 import { useSearchParams } from 'next/navigation';
 import { TicketSameAirline } from '@/features/flights/ui/TicketSameAirline/TicketSameAirline';
 import { sortFlights } from '@/app/flights/TicketList/modules/sortFlights';
+import getFlightParams from '@/app/flights/TicketList/modules/getFlightParams';
+import { setSingleFormField } from '@/features/searchForm/store/searchFormSlice';
+import airports from '@/features/searchForm/airports.json';
 
 export const TicketList = () => {
   const dispatch = useAppDispatch();
@@ -30,24 +28,28 @@ export const TicketList = () => {
   );
 
   useEffect(() => {
-    const flightParams: SearchParams = {
-      departureCode: searchParams.get('departureCode') || '',
-      departureDate: searchParams.get('departureDate') || '',
-      destinationCode: searchParams.get('destinationCode') || '',
-      cabinClass: searchParams.get('cabinClass') as CabinClass,
-      adults: Number(searchParams.get('adults')) || 1,
-      children: Number(searchParams.get('children')) || 0,
-      infant: Number(searchParams.get('infant')) || 0,
-      language: searchParams.get('language') || 'en',
-      currency: searchParams.get('currency') || 'USD',
-    };
-
-    const returnDate = searchParams.get('returnDate');
-    if (returnDate) {
-      flightParams.returnDate = returnDate;
-    }
+    const flightParams = getFlightParams(searchParams);
 
     dispatch(searchFlights(flightParams));
+
+    const airportFrom = airports.find(
+      (airport) =>
+        airport.iata.toLowerCase() === flightParams.departureCode.toLowerCase()
+    );
+    const airportTo = airports.find(
+      (airport) => airport.iata === flightParams.destinationCode
+    );
+
+    if (airportFrom) {
+      dispatch(setSingleFormField('from', airportFrom));
+    }
+    if (airportTo) {
+      dispatch(setSingleFormField('to', airportTo));
+    }
+    dispatch(setSingleFormField('departDate', flightParams.departureDate));
+    if (flightParams.returnDate) {
+      dispatch(setSingleFormField('returnDate', flightParams.returnDate));
+    }
 
     return () => {
       stopSearch();

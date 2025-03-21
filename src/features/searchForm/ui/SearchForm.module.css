@@ -112,3 +112,47 @@
 .datesInput :global(.search-form-input) {
   border-radius: var(--bd-radius-8) 0 0 var(--bd-radius-8);
 }
+
+.search {
+  display: flex;
+  flex-direction: column;
+}
+
+.search .shortenedSearchButton {
+  display: none;
+}
+
+@media (max-width: 1050px) {
+  .shortenedSearch .content {
+    display: none;
+  }
+
+  .shortenedSearch .shortenedSearchButton {
+    display: flex;
+    padding: var(--spacing-8) var(--spacing-16);
+    border-radius: var(--bd-radius-8);
+    background-color: var(--white);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .shortenedSearch .shortenedSearchButtonContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .shortenedSearch .shortenedSearchButtonTitle,
+  .shortenedSearch .shortenedSearchButtonSubtitle {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--gray-900);
+    display: block;
+  }
+
+  .shortenedSearch .shortenedSearchButtonSubtitle {
+    color: var(--gray-600);
+  }
+}

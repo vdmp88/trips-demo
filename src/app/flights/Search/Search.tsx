@@ -5,7 +5,7 @@ import SearchForm from '@/features/searchForm/ui';
 const Search: React.FC = () => (
   <div className={styles.search}>
     <Container>
-      <SearchForm collapsible />
+      <SearchForm initiallyCollapsed />
     </Container>
   </div>
 );

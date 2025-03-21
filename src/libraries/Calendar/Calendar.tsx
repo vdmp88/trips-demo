@@ -460,18 +460,6 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       }
     }, [selectionType]);
 
-    useEffect(() => {
-      if (calendarDate === null) {
-        setCalendarDate(new Date());
-        return;
-      }
-
-      if (calendarDate) {
-        const date = convertToDateObject(calendarDate, selectionType);
-        !isSameDateAs(_calendarDate, date) && setCalendarDate(date);
-      }
-    }, [calendarDate]);
-
     const [_startDate, setStartDate] = useStateWithCallback<Date | null>(
       startDate ? convertToDateObject(startDate, selectionType) : null,
       () =>
@@ -564,59 +552,35 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
 
       const _date = new Date(date);
 
-      if (view === 'days') {
-        setCalendarDate(
-          index ? new Date(_date.setMonth(_date.getMonth() - index)) : _date
-        );
-      }
-
       if (view === 'months' && selectionType !== 'month') {
-        setCalendarDate(
-          index ? new Date(_date.setMonth(_date.getMonth() - index)) : _date
-        );
         setView('days');
         return;
       }
 
       if (view === 'years' && selectionType !== 'year') {
-        setCalendarDate(
-          index
-            ? new Date(_date.setFullYear(_date.getFullYear() - index))
-            : _date
-        );
         setView('months');
         return;
       }
 
       if (range) {
-        if (_selectEndDate) {
+        if (_startDate && _endDate) {
+          setStartDate(date);
+          setEndDate(null);
+          setSelectEndDate(true);
+          return;
+        }
+
+        if (!_endDate && _selectEndDate) {
           setSelectEndDate(false);
 
           if (_startDate && _startDate > date) {
-            setStartDate(null);
+            setStartDate(date);
             setEndDate(null);
-            return;
-          }
-
-          if (isDisableDateInRange(_startDate, date, disabledDates)) {
-            setStartDate(null);
-            setEndDate(null);
+            setSelectEndDate(true);
             return;
           }
 
           setEndDate(date);
-          return;
-        }
-
-        if (_endDate && _endDate < date) {
-          setStartDate(null);
-          setEndDate(null);
-          return;
-        }
-
-        if (isDisableDateInRange(date, _endDate, disabledDates)) {
-          setStartDate(null);
-          setEndDate(null);
           return;
         }
 

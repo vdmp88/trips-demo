@@ -13,7 +13,7 @@ import classNames from 'classnames';
 import OneWayIcon from '@/icons/oneway.svg';
 import RoundTripIcon from '@/icons/roundtrip.svg';
 import CloseIcon from '@/icons/close.svg';
-import formatDateForInput from '@/features/searchForm/modules/formatDateForInput';
+import { formatDateForInput } from '@/features/searchForm/modules/formatDateForInput';
 import PopupBase from '@/components/ui/PopupBase/PopupBase';
 import PopupBaseMobileHeader from '@/components/ui/PopupBase/PopupBaseMobileHeader';
 import { toast } from 'sonner';

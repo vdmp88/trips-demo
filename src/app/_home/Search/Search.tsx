@@ -11,7 +11,7 @@ const Search: React.FC = () => (
         <div className={styles.titleWrapper}>
           <Typography tag="h1" variant="h1" text="Find the best flight deals" />
         </div>
-        <SearchForm collapsible={false} />
+        <SearchForm initiallyCollapsed={false} />
       </Container>
     </Section>
   </div>

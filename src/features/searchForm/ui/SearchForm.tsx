@@ -12,15 +12,25 @@ import SearchFlightsBtn from '@/features/searchForm/ui/SearchFlightsBtn';
 import FromToInputs from '@/features/searchForm/ui/FromToInputs';
 import DateInputs from '@/features/searchForm/ui/DateInputs';
 import TravellersInput from '@/features/searchForm/ui/TravellersInput';
+import ShortSearchButton from '@/features/searchForm/ui/ShortSearchButton';
 
 type Props = {
-  collapsible: boolean;
+  initiallyCollapsed: boolean;
 };
 
-const SearchForm: React.FC<Props> = () => {
+const SearchForm: React.FC<Props> = ({ initiallyCollapsed }) => {
+  const [collapsed, setCollapsed] = useState(initiallyCollapsed);
   const dispatch = useAppDispatch();
 
-  // TODO: Collapsible for flights page
+  const unCollapse = () => {
+    setCollapsed(false);
+  };
+
+  const onNewSearch = () => {
+    if (initiallyCollapsed) {
+      setCollapsed(true);
+    }
+  };
 
   const tripType = useAppSelector(
     (state) => state.searchForm.singleForm.tripType
@@ -42,58 +52,63 @@ const SearchForm: React.FC<Props> = () => {
   });
 
   return (
-    <div>
-      <div className={styles.tripTypeContainer}>
-        <div className={styles.tripTypeItemWrapper}>
-          <TripType
-            name="tripType"
-            placeholder="Round-trip"
-            checked={tripType === 'round'}
-            onChange={() => dispatch(setSingleFormField('tripType', 'round'))}
-          />
+    <div
+      className={classNames(styles.search, collapsed && styles.shortenedSearch)}
+    >
+      <ShortSearchButton onClick={unCollapse} />
+      <div className={styles.content}>
+        <div className={styles.tripTypeContainer}>
+          <div className={styles.tripTypeItemWrapper}>
+            <TripType
+              name="tripType"
+              placeholder="Round-trip"
+              checked={tripType === 'round'}
+              onChange={() => dispatch(setSingleFormField('tripType', 'round'))}
+            />
+          </div>
+          <div className={styles.tripTypeItemWrapper}>
+            <TripType
+              name="tripType"
+              placeholder="One-way"
+              checked={tripType === 'oneWay'}
+              onChange={() => {
+                dispatch(setSingleFormField('tripType', 'oneWay'));
+                dispatch(setSingleFormField('returnDate', null));
+              }}
+            />
+          </div>
         </div>
-        <div className={styles.tripTypeItemWrapper}>
-          <TripType
-            name="tripType"
-            placeholder="One-way"
-            checked={tripType === 'oneWay'}
-            onChange={() => {
-              dispatch(setSingleFormField('tripType', 'oneWay'));
-              dispatch(setSingleFormField('returnDate', null));
+        <div className={styles.controls}>
+          <div
+            className={classNames(
+              styles.inputsContainer,
+              tripType === 'oneWay' && styles.inputsContainerOneWay
+            )}
+          >
+            <FromToInputs />
+
+            <DateInputs setShowCalendar={setShowCalendar} />
+
+            <TravellersInput />
+          </div>
+
+          <SearchFlightsBtn onNewSearch={onNewSearch} />
+
+          <SingleCalendarPopup
+            show={showCalendar}
+            ref={calendarRef}
+            initialStartDate={departDate}
+            initialEndDate={returnDate}
+            onClosePress={() => {
+              setShowCalendar(false);
+            }}
+            onApplyPress={(startDate, endDate) => {
+              dispatch(setSingleFormField('departDate', startDate));
+              dispatch(setSingleFormField('returnDate', endDate ?? null));
+              setShowCalendar(false);
             }}
           />
         </div>
-      </div>
-      <div className={styles.controls}>
-        <div
-          className={classNames(
-            styles.inputsContainer,
-            tripType === 'oneWay' && styles.inputsContainerOneWay
-          )}
-        >
-          <FromToInputs />
-
-          <DateInputs setShowCalendar={setShowCalendar} />
-
-          <TravellersInput />
-        </div>
-
-        <SearchFlightsBtn />
-
-        <SingleCalendarPopup
-          show={showCalendar}
-          ref={calendarRef}
-          initialStartDate={departDate}
-          initialEndDate={returnDate}
-          onClosePress={() => {
-            setShowCalendar(false);
-          }}
-          onApplyPress={(startDate, endDate) => {
-            dispatch(setSingleFormField('departDate', startDate));
-            dispatch(setSingleFormField('returnDate', endDate ?? null));
-            setShowCalendar(false);
-          }}
-        />
       </div>
     </div>
   );

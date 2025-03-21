@@ -3,8 +3,10 @@
 import styles from './SearchForm.module.css';
 import { useAppSelector } from '@/hooks/hooks';
 import { ButtonInput } from '@/features/searchForm/ui/Input/Input';
-import { format } from 'date-fns';
-import formatDateForInput from '@/features/searchForm/modules/formatDateForInput';
+import {
+  formatDateForInput,
+  formatDateForInputShort,
+} from '@/features/searchForm/modules/formatDateForInput';
 import classNames from 'classnames';
 
 type Props = {
@@ -45,7 +47,7 @@ const DateInputs: React.FC<Props> = ({ setShowCalendar }) => {
           title="Dates"
           value={
             departDate
-              ? `${format(departDate, 'dd MMM')}${returnDate ? ' - ' + format(returnDate, 'dd MMM') : ''}`
+              ? `${formatDateForInputShort(departDate)}${returnDate ? ' - ' + formatDateForInputShort(returnDate) : ''}`
               : ''
           }
           type="button"

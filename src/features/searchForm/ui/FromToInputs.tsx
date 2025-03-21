@@ -1,12 +1,18 @@
 'use client';
 
-import { setSingleFormField } from '@/features/searchForm/store/searchFormSlice';
+import {
+  setSingleFormField,
+  SingleForm,
+} from '@/features/searchForm/store/searchFormSlice';
 import styles from './SearchForm.module.css';
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ButtonInput, TextInput } from '@/features/searchForm/ui/Input/Input';
 import useOutsideClick from '@/hooks/useOutsideClick';
 import AirportsPopup from '@/features/searchForm/ui/AirportsPopup/AirportsPopup';
+
+const formatInput = (input: SingleForm['from'] | SingleForm['to']) =>
+  input ? `${input.city} (${input.iata})` : '';
 
 const FromToInputs: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -39,6 +45,14 @@ const FromToInputs: React.FC = () => {
   useOutsideClick([toInputRef], () => {
     setShowToPopup(false);
   });
+
+  useEffect(() => {
+    setFromInput(formatInput(from));
+  }, [from]);
+
+  useEffect(() => {
+    setToInput(formatInput(to));
+  }, [to]);
 
   return (
     <>

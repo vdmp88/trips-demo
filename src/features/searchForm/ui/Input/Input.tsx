@@ -50,6 +50,7 @@ const TextInput = forwardRef(
         className={styles.inputField}
         value={value}
         placeholder={placeholder}
+        autoComplete="off"
       />
     </Base>
   )
