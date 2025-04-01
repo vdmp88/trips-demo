@@ -2,11 +2,7 @@ import { getDuration } from '@/app/flights/TicketList/modules/getDuration';
 import { getPrice } from '@/app/flights/TicketList/modules/getPrice';
 import { FlightTrip, SortOption } from '@/features/flights/flightSlice';
 
-export const sortFlights = (
-  flights: FlightTrip[],
-  sortOption: SortOption,
-  limit: number
-) => {
+export const sortFlights = (flights: FlightTrip[], sortOption: SortOption) => {
   const sortedFlights = [...flights].sort((a, b) => {
     if (sortOption === SortOption.CHEAPEST) {
       return getPrice(a) - getPrice(b);
@@ -26,5 +22,5 @@ export const sortFlights = (
     return 0;
   });
 
-  return sortedFlights.slice(0, limit);
+  return sortedFlights;
 };

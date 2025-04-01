@@ -74,6 +74,11 @@ body {
   flex-direction: column;
 }
 
+body.scroll-block {
+  overflow: hidden;
+  padding-right: var(--scroll-compensator, 0);
+}
+
 button {
   outline: none;
   border: none;

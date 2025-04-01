@@ -7,6 +7,8 @@ import airports from '../../airports.json';
 import classNames from 'classnames';
 import PopupBaseMobileHeader from '@/components/ui/PopupBase/PopupBaseMobileHeader';
 import Container from '@/components/layout/Container';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import useScrollBlock from '@/hooks/useScrollBlock';
 
 export type Airport = {
   city: string;
@@ -32,6 +34,10 @@ const AirportsPopup: React.FC<Props> = ({
   show,
   title,
 }) => {
+  const isFullScreen = useMediaQuery('max', 768);
+
+  useScrollBlock(isFullScreen && show);
+
   if (!show) return null;
 
   const data = inputValue

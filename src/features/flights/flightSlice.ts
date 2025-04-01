@@ -1,6 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+
+export type Filter = {
+  priceRange: [number, number];
+  departureTimeRange: {
+    outbound: [number, number];
+    return: [number, number];
+  };
+  airlines: string[];
+};
 
 export type FlightInfo = {
   departureDate: string;
@@ -47,8 +54,8 @@ export type FlightTrip =
   | MultiCityFlightTrip;
 
 export enum SortOption {
-  CHEAPEST = 'CHEAPEST',
-  FASTEST = 'FASTEST',
+  CHEAPEST = 'Cheapest',
+  FASTEST = 'Fastest',
 }
 
 export enum CabinClass {
@@ -65,6 +72,9 @@ type FlightsState = {
   sortOption: SortOption;
   error: string | null;
   hasInitialResults: boolean;
+  filters: Filter;
+  minPriceRange: number;
+  maxPriceRange: number;
 };
 
 const initialState: FlightsState = {
@@ -76,6 +86,16 @@ const initialState: FlightsState = {
   error: null,
   sortOption: SortOption.CHEAPEST,
   hasInitialResults: false,
+  filters: {
+    priceRange: [0, 10000],
+    departureTimeRange: {
+      outbound: [0, 1439],
+      return: [0, 1439],
+    },
+    airlines: [],
+  },
+  minPriceRange: 0,
+  maxPriceRange: 10000,
 };
 
 export type SearchParams = {
@@ -175,6 +195,7 @@ export const searchFlights = createAsyncThunk<
     if (error instanceof Error) {
       return rejectWithValue(error.message);
     }
+
     return rejectWithValue('An unknown error occurred');
   }
 });
@@ -205,6 +226,35 @@ const flightSlice = createSlice({
       if (!state.hasInitialResults) {
         state.hasInitialResults = true;
       }
+
+      const { minPrice, maxPrice } = state.flightTrips.reduce(
+        (acc, trip) => {
+          const price =
+            trip['@'] === 'OneWayFlightTrip'
+              ? trip.flightInfo.price
+              : trip.price;
+          return {
+            minPrice: Math.min(acc.minPrice, price),
+            maxPrice: Math.max(acc.maxPrice, price),
+          };
+        },
+        { minPrice: Infinity, maxPrice: 0 }
+      );
+
+      state.minPriceRange = minPrice === Infinity ? 0 : minPrice;
+      state.maxPriceRange = maxPrice === 0 ? state.maxPriceRange : maxPrice;
+
+      if (
+        !state.hasInitialResults ||
+        state.flightTrips.length === action.payload.length
+      ) {
+        state.filters.priceRange = [state.minPriceRange, state.maxPriceRange];
+      } else {
+        state.filters.priceRange = [
+          Math.max(state.minPriceRange, state.filters.priceRange[0]),
+          Math.min(state.maxPriceRange, state.filters.priceRange[1]),
+        ];
+      }
     },
     setSearchCompleted(state) {
       state.isLoading = false;
@@ -215,6 +265,9 @@ const flightSlice = createSlice({
     },
     setSortOption(state, action: PayloadAction<SortOption>) {
       state.sortOption = action.payload;
+    },
+    setFilters: (state, action: PayloadAction<Partial<Filter>>) => {
+      state.filters = { ...state.filters, ...action.payload };
     },
   },
   extraReducers: (builder) => {
@@ -241,6 +294,7 @@ export const {
   addFlightTrips,
   setSearchCompleted,
   setError,
+  setFilters,
 } = flightSlice.actions;
 
 export default flightSlice.reducer;

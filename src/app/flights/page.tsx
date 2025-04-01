@@ -7,7 +7,7 @@ import styles from './page.module.css';
 import { SortTickets } from '@/app/flights/SortTickets/SortTickets';
 import { redirect } from 'next/navigation';
 import { ScrollToTop } from '@/app/flights/ScrollToTop';
-import { ProgressBar } from '@/app/flights/TicketList/ProgressBar/ProgressBar';
+import { ProgressBarWrapper } from '@/app/flights/TicketList/ProgressBar/ProgressBarWrapper';
 
 type PageProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -22,8 +22,8 @@ export default async function Flights({ searchParams }: PageProps) {
   return (
     <>
       <Search />
-      <div>
-        <ProgressBar />
+      <div style={{ background: 'var(--gray-100)' }}>
+        <ProgressBarWrapper />
       </div>
       <Section className={styles.pageWrapper}>
         <Container>

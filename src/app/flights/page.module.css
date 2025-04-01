@@ -11,7 +11,9 @@
 .filterWrapper {
   max-width: 300px;
   width: 100%;
-  background: pink;
+  position: sticky;
+  top: 20px;
+  height: max-content;
 }
 
 .sortWrapper {

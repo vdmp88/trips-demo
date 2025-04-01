@@ -1,6 +1,6 @@
 .progressContainer {
   width: 100%;
-  background-color: var(--gray-100);
+  background-color: transparent;
 }
 
 .progressWrapper {

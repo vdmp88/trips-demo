@@ -7,6 +7,8 @@ import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import { setClassType } from '@/features/searchForm/store/searchFormSlice';
 import classNames from 'classnames';
 import PopupBaseMobileHeader from '@/components/ui/PopupBase/PopupBaseMobileHeader';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import useScrollBlock from '@/hooks/useScrollBlock';
 
 type Props = {
   show: boolean;
@@ -20,6 +22,11 @@ const TravellersPopup = forwardRef<HTMLDivElement, Props>(
       (state) => state.searchForm.travellers.classType
     );
     const dispatch = useAppDispatch();
+
+    const isFullScreen = useMediaQuery('max', 768);
+
+    useScrollBlock(isFullScreen && show);
+
     if (!show) {
       return null;
     }

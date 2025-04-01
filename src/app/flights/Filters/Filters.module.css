@@ -1,0 +1,33 @@
+.filters {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--bd-radius-16);
+  padding: var(--spacing-16) 0;
+  position: sticky;
+}
+
+.collapsibleFilterHeader {
+  display: flex;
+  padding: var(--spacing-16) var(--spacing-24);
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+}
+
+.divider {
+  position: absolute;
+  width: calc(100% - 48px);
+  background: var(--gray-200);
+  height: 1px;
+  left: 24px;
+  bottom: 0;
+}
+
+.progressBarWrapper {
+  padding: 32px 24px;
+  height: 385px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}

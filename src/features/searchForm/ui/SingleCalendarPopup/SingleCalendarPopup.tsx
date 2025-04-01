@@ -14,6 +14,8 @@ import CloseIcon from '@/icons/close.svg';
 import { formatDateForInput } from '@/features/searchForm/modules/formatDateForInput';
 import PopupBase from '@/components/ui/PopupBase/PopupBase';
 import PopupBaseMobileHeader from '@/components/ui/PopupBase/PopupBaseMobileHeader';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import useScrollBlock from '@/hooks/useScrollBlock';
 
 type Props = {
   show: boolean;
@@ -44,6 +46,10 @@ const SingleCalendarPopup = forwardRef<HTMLDivElement, Props>(
     ref
   ) => {
     // const [flexible, setFlexible] = useState(false);
+
+    const isFullScreen = useMediaQuery('max', 768);
+
+    useScrollBlock(isFullScreen && show);
 
     const tripType = useAppSelector(
       (state) => state.searchForm.singleForm.tripType

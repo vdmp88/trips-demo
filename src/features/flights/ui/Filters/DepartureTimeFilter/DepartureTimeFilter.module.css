@@ -1,0 +1,31 @@
+.filterContainer {
+  display: flex;
+  padding: var(--spacing-16) var(--spacing-24);
+  flex-direction: column;
+  gap: 24px;
+}
+
+.rangeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rangeTrack {
+  height: 4px;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.rangeThumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #2674ea;
+  cursor: pointer;
+}
+
+.rangeThumb:active,
+.rangeThumb:hover {
+  background: var(--primary-color);
+}

@@ -3,8 +3,14 @@
 import { Ticket } from '@/features/flights/ui/Ticket/Ticket';
 import styles from './TicketList.module.css';
 import { TicketSkeleton } from '@/features/flights/ui/Ticket/TicketSkeleton';
-import { useEffect, useMemo, useState } from 'react';
-import { searchFlights, stopSearch } from '@/features/flights/flightSlice';
+import { useEffect, useState } from 'react';
+import {
+  Filter,
+  FlightTrip,
+  searchFlights,
+  SortOption,
+  stopSearch,
+} from '@/features/flights/flightSlice';
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import { useSearchParams } from 'next/navigation';
 import { TicketSameAirline } from '@/features/flights/ui/TicketSameAirline/TicketSameAirline';
@@ -14,25 +20,109 @@ import { setSingleFormField } from '@/features/searchForm/store/searchFormSlice'
 import airports from '@/features/searchForm/airports.json';
 import { Button } from '@/components/ui/Button/Button';
 
+const parseTimeToMinutes = (time: string) => {
+  const [hours, minutes] = time.split(':').map(Number);
+  return hours * 60 + minutes;
+};
+
 export const TicketList = () => {
   const dispatch = useAppDispatch();
   const searchParams = useSearchParams();
+
   const tripType = useAppSelector(
     (state) => state.searchForm.singleForm.tripType
   );
-  const sortOption = useAppSelector((state) => state.flights.sortOption);
+
+  const { flightTrips, sortOption, filters, hasInitialResults } =
+    useAppSelector((state) => state.flights);
+
+  const [filteredAndSortedTrips, setFilteredAndSortedTrips] = useState<
+    FlightTrip[]
+  >([]);
+
   const [displayedTrips, setDisplayedTrips] = useState<number>(5);
 
-  const { flightTrips, hasInitialResults } = useAppSelector(
-    (state) => state.flights
-  );
+  const applyFiltersAndSort = (
+    trips: FlightTrip[],
+    filters: Filter,
+    sortOption: SortOption
+  ) => {
+    const filteredTrips = trips.filter((trip) => {
+      let price: number;
+      let outboundDepartureTime: number;
+      let returnDepartureTime: number | null = null;
+      let airlines: string[] = [];
+
+      switch (trip['@']) {
+        case 'OneWayFlightTrip':
+          price = trip.flightInfo.price;
+          outboundDepartureTime = parseTimeToMinutes(
+            trip.flightInfo.departureTime
+          );
+          airlines = [trip.flightInfo.airlineName];
+          break;
+        case 'RoundFlightTrip':
+          price = trip.price;
+          outboundDepartureTime = parseTimeToMinutes(
+            trip.flightInfo.departureTime
+          );
+          returnDepartureTime = parseTimeToMinutes(
+            trip.returnFlightInfo.departureTime
+          );
+          airlines = [
+            trip.flightInfo.airlineName,
+            trip.returnFlightInfo.airlineName,
+          ];
+          break;
+        case 'MultiCityFlightTrip':
+          price = trip.price;
+          outboundDepartureTime = parseTimeToMinutes(
+            trip.flightInfo[0].departureTime
+          );
+          airlines = trip.flightInfo.map((info) => info.airlineName);
+          break;
+        default:
+          return false;
+      }
+
+      const withinPriceRange =
+        price >= filters.priceRange[0] && price <= filters.priceRange[1];
+      const withinOutboundTime =
+        outboundDepartureTime >= filters.departureTimeRange.outbound[0] &&
+        outboundDepartureTime <= filters.departureTimeRange.outbound[1];
+      const withinReturnTime =
+        returnDepartureTime === null ||
+        (returnDepartureTime >= filters.departureTimeRange.return[0] &&
+          returnDepartureTime <= filters.departureTimeRange.return[1]);
+      const airlineMatch =
+        filters.airlines.length === 0 ||
+        airlines.some((airline) => filters.airlines.includes(airline));
+
+      return (
+        withinPriceRange &&
+        withinOutboundTime &&
+        withinReturnTime &&
+        airlineMatch
+      );
+    });
+
+    return sortFlights(filteredTrips, sortOption);
+  };
+
+  useEffect(() => {
+    if (flightTrips.length > 0) {
+      const updatedTickets = applyFiltersAndSort(
+        flightTrips,
+        filters,
+        sortOption
+      );
+      setFilteredAndSortedTrips(updatedTickets);
+    }
+  }, [flightTrips, filters, sortOption]);
 
   useEffect(() => {
     const flightParams = getFlightParams(searchParams);
-
     dispatch(searchFlights(flightParams));
-
-    console.log('TESTING USE EFFECT FOR SEARCH');
 
     const airportFrom = airports.find(
       (airport) =>
@@ -42,12 +132,8 @@ export const TicketList = () => {
       (airport) => airport.iata === flightParams.destinationCode
     );
 
-    if (airportFrom) {
-      dispatch(setSingleFormField('from', airportFrom));
-    }
-    if (airportTo) {
-      dispatch(setSingleFormField('to', airportTo));
-    }
+    if (airportFrom) dispatch(setSingleFormField('from', airportFrom));
+    if (airportTo) dispatch(setSingleFormField('to', airportTo));
     dispatch(setSingleFormField('departDate', flightParams.departureDate));
     if (flightParams.returnDate) {
       dispatch(setSingleFormField('returnDate', flightParams.returnDate));
@@ -73,7 +159,6 @@ export const TicketList = () => {
       return (
         <div className={styles.ticketWrapper} key={trip.searchResultId}>
           {trip['@'] === 'OneWayFlightTrip' && <Ticket {...trip.flightInfo} />}
-
           {trip['@'] === 'RoundFlightTrip' && (
             <>
               {isSameAirline && <TicketSameAirline {...trip} />}
@@ -90,11 +175,6 @@ export const TicketList = () => {
       );
     });
   };
-
-  const visibleFlights = useMemo(
-    () => sortFlights(flightTrips, sortOption, displayedTrips),
-    [flightTrips, sortOption, displayedTrips]
-  );
 
   if (!hasInitialResults) {
     return (
@@ -117,19 +197,17 @@ export const TicketList = () => {
   }
 
   return (
-    <>
-      <div className={styles.ticketList}>
-        {renderTickets(visibleFlights)}
-        {displayedTrips < flightTrips.length && (
-          <Button
-            variant="outline"
-            onClick={handleLoadMore}
-            className={styles.loadMoreButton}
-          >
-            View more
-          </Button>
-        )}
-      </div>
-    </>
+    <div className={styles.ticketList}>
+      {renderTickets(filteredAndSortedTrips.slice(0, displayedTrips))}
+      {displayedTrips < filteredAndSortedTrips.length && (
+        <Button
+          variant="outline"
+          onClick={handleLoadMore}
+          className={styles.loadMoreButton}
+        >
+          View more
+        </Button>
+      )}
+    </div>
   );
 };
