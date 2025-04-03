@@ -13,6 +13,10 @@ export const DepartureTimeFilter: React.FC = () => {
     (state) => state.flights.filters.departureTimeRange
   );
 
+  const tripType = useAppSelector(
+    (state) => state.searchForm.singleForm.tripType
+  );
+
   const [localOutboundValues, setLocalOutboundValues] = useState<
     [number, number]
   >(departureTimeRange.outbound);
@@ -62,13 +66,15 @@ export const DepartureTimeFilter: React.FC = () => {
         min={minTime}
         max={maxTime}
       />
-      <TimeRangeInput
-        label="Return"
-        values={localReturnValues}
-        onChange={handleReturnChange}
-        min={minTime}
-        max={maxTime}
-      />
+      {tripType !== 'oneWay' && (
+        <TimeRangeInput
+          label="Return"
+          values={localReturnValues}
+          onChange={handleReturnChange}
+          min={minTime}
+          max={maxTime}
+        />
+      )}
     </div>
   );
 };

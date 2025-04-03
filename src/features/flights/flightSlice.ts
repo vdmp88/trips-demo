@@ -204,6 +204,39 @@ const flightSlice = createSlice({
   name: 'flights',
   initialState,
   reducers: {
+    resetAllFilters: (state) => {
+      state.filters = {
+        priceRange: [state.minPriceRange, state.maxPriceRange],
+        departureTimeRange: {
+          outbound: [0, 1439],
+          return: [0, 1439],
+        },
+        airlines: [],
+      };
+    },
+    setFlightTrips: (state, action: PayloadAction<FlightTrip[]>) => {
+      state.flightTrips = action.payload;
+
+      const allAirlines = Array.from(
+        new Set(
+          action.payload.flatMap((trip) => {
+            if (trip['@'] === 'OneWayFlightTrip') {
+              return [trip.flightInfo.airlineName];
+            } else if (trip['@'] === 'RoundFlightTrip') {
+              return [
+                trip.flightInfo.airlineName,
+                trip.returnFlightInfo.airlineName,
+              ];
+            } else if (trip['@'] === 'MultiCityFlightTrip') {
+              return trip.flightInfo.map((info) => info.airlineName);
+            }
+            return [];
+          })
+        )
+      ).filter(Boolean);
+
+      state.filters.airlines = allAirlines;
+    },
     setSearchStarted(
       state,
       action: PayloadAction<{ searchId: string; totalProviders: number }>
@@ -258,6 +291,7 @@ const flightSlice = createSlice({
     },
     setSearchCompleted(state) {
       state.isLoading = false;
+      state.filters.priceRange = [state.minPriceRange, state.maxPriceRange];
     },
     setError(state, action: PayloadAction<string>) {
       state.error = action.payload;
@@ -294,6 +328,7 @@ export const {
   addFlightTrips,
   setSearchCompleted,
   setError,
+  resetAllFilters,
   setFilters,
 } = flightSlice.actions;
 

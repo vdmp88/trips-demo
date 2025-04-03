@@ -50,6 +50,10 @@
     display: none;
   }
 
+  .mobileFilterWrapper {
+    margin-bottom: 32px;
+  }
+
   .sectionWrapper {
     justify-content: center;
   }

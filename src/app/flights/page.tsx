@@ -8,6 +8,7 @@ import { SortTickets } from '@/app/flights/SortTickets/SortTickets';
 import { redirect } from 'next/navigation';
 import { ScrollToTop } from '@/app/flights/ScrollToTop';
 import { ProgressBarWrapper } from '@/app/flights/TicketList/ProgressBar/ProgressBarWrapper';
+import { MobileFilters } from '@/app/flights/TicketList/MobileFilters/MobileFilters';
 
 type PageProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -32,6 +33,9 @@ export default async function Flights({ searchParams }: PageProps) {
               <Filters />
             </div>
             <div className={styles.ticketListWrapper}>
+              <div className={styles.mobileFilterWrapper}>
+                <MobileFilters />
+              </div>
               <div className={styles.sortWrapper}>
                 <SortTickets />
               </div>

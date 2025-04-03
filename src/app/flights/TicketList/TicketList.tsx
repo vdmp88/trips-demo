@@ -19,6 +19,7 @@ import getFlightParams from '@/app/flights/TicketList/modules/getFlightParams';
 import { setSingleFormField } from '@/features/searchForm/store/searchFormSlice';
 import airports from '@/features/searchForm/airports.json';
 import { Button } from '@/components/ui/Button/Button';
+import { Typography } from '@/components/ui/Typography/Typography';
 
 const parseTimeToMinutes = (time: string) => {
   const [hours, minutes] = time.split(':').map(Number);
@@ -198,15 +199,25 @@ export const TicketList = () => {
 
   return (
     <div className={styles.ticketList}>
-      {renderTickets(filteredAndSortedTrips.slice(0, displayedTrips))}
-      {displayedTrips < filteredAndSortedTrips.length && (
-        <Button
-          variant="outline"
-          onClick={handleLoadMore}
-          className={styles.loadMoreButton}
-        >
-          View more
-        </Button>
+      {filteredAndSortedTrips.length === 0 ? (
+        <Typography
+          variant="regular16"
+          text="No flights found matching your criteria"
+          className={styles.noResults}
+        />
+      ) : (
+        <>
+          {renderTickets(filteredAndSortedTrips.slice(0, displayedTrips))}
+          {displayedTrips < filteredAndSortedTrips.length && (
+            <Button
+              variant="outline"
+              onClick={handleLoadMore}
+              className={styles.loadMoreButton}
+            >
+              View more
+            </Button>
+          )}
+        </>
       )}
     </div>
   );
