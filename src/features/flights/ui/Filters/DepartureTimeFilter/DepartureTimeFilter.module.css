@@ -5,6 +5,13 @@
   gap: 24px;
 }
 
+@media (max-width: 1050px) {
+  .filterContainer {
+    padding: var(--spacing-24);
+    gap: 48px;
+  }
+}
+
 .rangeWrapper {
   display: flex;
   flex-direction: column;

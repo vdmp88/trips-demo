@@ -20,6 +20,30 @@ export const DepartureTimeFilterModal: React.FC<
     <div className={styles.departureModal}>
       <div className={styles.modalHeader}>
         <Typography className={styles.modalTitle} text="Departure Time" />
+        <button className={styles.closeButton} onClick={onClose}>
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M26 14L14 26"
+              stroke="#181D27"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M14 14L26 26"
+              stroke="#181D27"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </div>
       <div className={styles.modalContent}>
         <DepartureTimeFilter />

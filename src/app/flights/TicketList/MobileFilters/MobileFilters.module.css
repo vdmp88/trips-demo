@@ -24,7 +24,7 @@
   background: rgba(10, 10, 10, 0.4);
 }
 
-.modalTitle {
+.modalHeader .modalTitle {
   text-align: center;
   font-size: var(--text-20);
   font-weight: var(--fw-600);
@@ -60,7 +60,10 @@
   padding: 22px 24px 14px;
   border-bottom: 1px solid var(--gray-200);
   margin: 0 24px;
-  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modalFooter {
@@ -77,4 +80,9 @@
   font-size: var(--text-16);
   line-height: var(--text-20);
   padding: 14px 24px;
+}
+
+.closeButton {
+  position: absolute;
+  right: 0;
 }
